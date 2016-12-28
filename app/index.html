@@ -5,8 +5,10 @@
     <title>Visor Acueducto</title>
 
     <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+    <link href="//js.arcgis.com/3.19/esri/css/esri.css" rel="stylesheet" />
     <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css" rel="stylesheet" />
     <link href="vendor/sidebar-v2/css/ol3-sidebar.css" rel="stylesheet" />
@@ -20,19 +22,19 @@
         <div class="sidebar-tabs">
             <ul role="tablist">
                 <li>
-                  <a href="#toc" role="tab" class="tooltipped" data-position="right" data-delay="500" data-tooltip="Tabla de Contenidos">
-                    <i class="material-icons">subject</i>
-                  </a>
+                    <a href="#toc" role="tab" class="tooltipped" data-position="right" data-delay="500" data-tooltip="Tabla de Contenidos">
+                        <i class="material-icons">subject</i>
+                    </a>
                 </li>
                 <li>
-                  <a href="#profile" role="tab" class="tooltipped" data-position="right" data-delay="500" data-tooltip="Acerca de">
-                    <i class="material-icons">account_circle</i>
-                  </a>
+                    <a href="#profile" role="tab" class="tooltipped" data-position="right" data-delay="500" data-tooltip="Acerca de">
+                        <i class="material-icons">account_circle</i>
+                    </a>
                 </li>
                 <li class="disabled">
-                  <a href="#messages" role="tab" class="tooltipped" data-position="right" data-delay="500" data-tooltip="Alertas">
-                    <i class="material-icons">new_releases</i>
-                  </a>
+                    <a href="#messages" role="tab" class="tooltipped" data-position="right" data-delay="500" data-tooltip="Alertas">
+                        <i class="material-icons">new_releases</i>
+                    </a>
                 </li>
             </ul>
 
@@ -44,55 +46,55 @@
         <!-- Tab panes -->
         <div class="sidebar-content">
             <div class="sidebar-pane" id="toc">
-              <ul class="collection">
-                <li class="collection-item avatar">
-                  <img src="css/img/sotano1.png" alt="" class="circle">
-                  <span class="title">Capa 1</span>
-                  <p>Cartografía Temática<br>Capa Raster</p>
-                  <a href="#!" onclick="changeVisibility(this)" data-layer="sotano1_raster" class="secondary-content">
-                    <i class="material-icons btnEye">visibility</i>
-                  </a>
-                </li>
-                <li class="collection-item avatar">
-                  <i class="material-icons circle">layers</i>
-                  <span class="title">Capa 2</span>
-                  <p>Grupo Capas<br>Capa Vector</p>
-                  <a href="#!" onclick="changeVisibility(this)" data-layer="sotano1_vector" class="secondary-content">
-                    <i class="material-icons btnEye">visibility</i>
-                  </a>
-                </li>
-                <li class="collection-item avatar">
-                  <i class="material-icons circle green">local_parking</i>
-                  <span class="title">Capa 3</span>
-                  <p>Capas 3<br>Capa Vector</p>
-                  <a href="#!" onclick="changeVisibility(this)" data-layer="sotano1_islas_vector" class="secondary-content">
-                    <i class="material-icons btnEye">visibility</i>
-                  </a>
-                </li>
-                <li class="collection-item avatar">
-                  <i class="material-icons circle red">map</i>
-                  <span class="title">Google Maps Spatial</span>
-                  <p>Capa Raster</p>
-                  <a href="#!" onclick="changeVisibility(this)" data-layer="" class="secondary-content">
-                    <i class="material-icons btnEye">visibility_off</i>
-                  </a>
-                </li>
-              </ul>
+                <ul class="collection">
+                    <li class="collection-item avatar">
+                        <img src="css/img/sotano1.png" alt="" class="circle">
+                        <span class="title">Capa 1</span>
+                        <p>Cartografía Temática<br>Capa Raster</p>
+                        <a href="#!" onclick="changeVisibility(this)" data-layer="sotano1_raster" class="secondary-content">
+                            <i class="material-icons btnEye">visibility</i>
+                        </a>
+                    </li>
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle">layers</i>
+                        <span class="title">Capa 2</span>
+                        <p>Grupo Capas<br>Capa Vector</p>
+                        <a href="#!" onclick="changeVisibility(this)" data-layer="sotano1_vector" class="secondary-content">
+                            <i class="material-icons btnEye">visibility</i>
+                        </a>
+                    </li>
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle green">local_parking</i>
+                        <span class="title">Capa 3</span>
+                        <p>Capas 3<br>Capa Vector</p>
+                        <a href="#!" onclick="changeVisibility(this)" data-layer="sotano1_islas_vector" class="secondary-content">
+                            <i class="material-icons btnEye">visibility</i>
+                        </a>
+                    </li>
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle red">map</i>
+                        <span class="title">Google Maps Spatial</span>
+                        <p>Capa Raster</p>
+                        <a href="#!" onclick="changeVisibility(this)" data-layer="" class="secondary-content">
+                            <i class="material-icons btnEye">visibility_off</i>
+                        </a>
+                    </li>
+                </ul>
             </div>
 
             <div class="sidebar-pane" id="profile">
-              <div class="row">
-                <div class="col s12">
-                  <div class="card teal lighten-2 ">
-                    <div class="card-content white-text">
-                      <span class="card-title">Proyecto Acueducto</span>
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card teal lighten-2 ">
+                            <div class="card-content white-text">
+                                <span class="card-title">Proyecto Acueducto</span>
+                            </div>
+                            <div class="card-action white-text">
+                                <p>Párrafo</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-action white-text">
-                      <p>Párrafo</p>
-                    </div>
-                  </div>
                 </div>
-              </div>
             </div>
 
             <div class="sidebar-pane" id="messages">
@@ -138,6 +140,8 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js" type="text/javascript"></script>
     <script src="vendor/sidebar-v2/js/jquery-sidebar.js" type="text/javascript"></script>
 
+    <script src="https://js.arcgis.com/3.19/"></script>
+    <script src="js/incige.js"></script>
     <script src="js/script.js"></script>
 </body>
 
