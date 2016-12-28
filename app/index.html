@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hermes</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css" rel="stylesheet" />
+    <link href="vendor/ol3/ol.css" rel="stylesheet" />
+    <link href="vendor/sidebar-v2/css/ol3-sidebar.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!--http://dbauszus-webmaps.appspot.com/ol3-wfs-t-->
+    <div id="sidebar" class="sidebar collapsed">
+        <!-- Nav tabs -->
+        <div class="sidebar-tabs">
+            <ul role="tablist">
+                <li>
+                  <a href="#toc" role="tab" class="tooltipped" data-position="right" data-delay="500" data-tooltip="Tabla de Contenidos">
+                    <i class="material-icons">subject</i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#profile" role="tab" class="tooltipped" data-position="right" data-delay="500" data-tooltip="Acerca de">
+                    <i class="material-icons">account_circle</i>
+                  </a>
+                </li>
+                <li class="disabled">
+                  <a href="#messages" role="tab" class="tooltipped" data-position="right" data-delay="500" data-tooltip="Alertas">
+                    <i class="material-icons">new_releases</i>
+                  </a>
+                </li>
+            </ul>
+
+            <ul role="tablist">
+                <li><a href="#settings" role="tab"><i class="material-icons">settings</i></a></li>
+            </ul>
+        </div>
+
+        <!-- Tab panes -->
+        <div class="sidebar-content">
+            <div class="sidebar-pane" id="toc">
+              <ul class="collection">
+                <li class="collection-item avatar">
+                  <img src="css/img/sotano1.png" alt="" class="circle">
+                  <span class="title">Sotano 1</span>
+                  <p>Cartografía Temática<br>Capa Raster</p>
+                  <a href="#!" onclick="changeVisibility(this)" data-layer="sotano1_raster" class="secondary-content">
+                    <i class="material-icons btnEye">visibility</i>
+                  </a>
+                </li>
+                <li class="collection-item avatar">
+                  <i class="material-icons circle">layers</i>
+                  <span class="title">Sótano 1</span>
+                  <p>Grupo Isla<br>Capa Vector</p>
+                  <a href="#!" onclick="changeVisibility(this)" data-layer="sotano1_vector" class="secondary-content">
+                    <i class="material-icons btnEye">visibility</i>
+                  </a>
+                </li>
+                <li class="collection-item avatar">
+                  <i class="material-icons circle green">local_parking</i>
+                  <span class="title">Islas Sótano 1</span>
+                  <p>Islas<br>Capa Vector</p>
+                  <a href="#!" onclick="changeVisibility(this)" data-layer="sotano1_islas_vector" class="secondary-content">
+                    <i class="material-icons btnEye">visibility</i>
+                  </a>
+                </li>
+                <li class="collection-item avatar">
+                  <i class="material-icons circle red">map</i>
+                  <span class="title">Google Maps Spatial</span>
+                  <p>Capa Raster</p>
+                  <a href="#!" onclick="changeVisibility(this)" data-layer="" class="secondary-content">
+                    <i class="material-icons btnEye">visibility_off</i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="sidebar-pane" id="profile">
+              <div class="row">
+                <div class="col s12">
+                  <div class="card teal lighten-2 ">
+                    <div class="card-content white-text">
+                      <span class="card-title">Proyecto Parqueaderos</span>
+                      <h2>Universidad Distrital Francisco José de Caldas</h2>
+                      <h5>Jorge Ulises Useche Cuellar<br> Omar Leonardo Zambrano Pulgarín</h5>
+                    </div>
+                    <div class="card-action white-text">
+                      <p>
+                          Construir e implementar el componente sistema de gestión de parqueaderos, perteneciente al sistema de gestión administrativa del dominio de aplicaciones de la Universidad Distrital Francisco José de Caldas.
+                      </p>
+                      <ul>
+                          <li>
+                              Realizar una aplicación web para la interfaz del proyecto en donde se vea la disponibilidad de las zonas de parqueo.
+                          </li>
+                          <li>
+                              Implementar dispositivos de detección de vehículos para permitir el acceso o salida de vehículos que serán identificados a través de algún mecanismo que garantice su identidad.
+                          </li>
+                          <li>
+                              Realizar un trabajo de normalización de protocolos y seguridad para el registro y control de acceso de vehículos para que su implementación pueda ser progresiva en las sedes de la universidad.
+                          </li>
+                          <li>
+                              Generar un modelo de parqueadero en un sistema informático que permita la optimización del recurso espacial.
+                          </li>
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sidebar-pane" id="messages">
+                <h1 class="sidebar-header">Mensajes<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <p>
+                    Realizando Tracking
+                </p>
+            </div>
+
+            <div class="sidebar-pane" id="settings">
+                <h1 class="sidebar-header">Configuraciones<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            </div>
+        </div>
+    </div>
+
+    <div id="map" class="sidebar-map"></div>
+    <!--https://design.google.com/icons/#ic_speaker_notes-->
+    <!--
+    <div id="btnDelete" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Eliminar">
+        <i class="large material-icons">delete</i>
+    </div>
+    <div id="btnDrawLine" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Línea">
+        <i class="large material-icons">share</i>
+    </div>
+    <div id="btnDrawPoly" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Polígono">
+        <i class="large material-icons">signal_cellular_null</i>
+    </div>
+    <div id="btnDrawPoint" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Punto">
+        <i class="large material-icons">location_on</i>
+    </div>
+    <div id="btnEdit" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Editar">
+        <i class="large material-icons">edit</i>
+    </div>
+    <div id="btnSelect" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Identificar">
+        <i class="large material-icons">speaker_notes</i>
+    </div>
+      -->
+
+    <div id="btnZoomIn" class="hide btn-floating btn-large waves-effect waves-light teal"><i class="large material-icons">add</i></div>
+    <div id="btnZoomOut" class="hide btn-floating btn-large waves-effect waves-light teal"><i class="large material-icons">remove</i></div>
+
+    <script src="vendor/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js" type="text/javascript"></script>
+    <script src="vendor/ol3/ol.js" type="text/javascript"></script>
+    <script src="vendor/sidebar-v2/js/jquery-sidebar.js" type="text/javascript"></script>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
