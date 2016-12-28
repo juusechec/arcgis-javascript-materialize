@@ -1,23 +1,22 @@
 {
   "name": "parqueaderos",
   "version": "0.0.1",
-  "description": "Aplicación de Parqueaderos Universidad Distrital",
+  "description": "Aplicación de Acueducto",
   "main": "gulpfile.js",
   "scripts": {
     "test": "tape 'test/**/*.js'"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/udistrital/parqueaderos/tree/master/src/Visor"
+    "url": "https://github.com/juusechec/arcgis-javascript-materialize"
   },
   "keywords": [
-    "automatizacion",
-    "parqueadero",
+    "acueducto",
     "sistema",
     "gestion",
-    "geografico"
+    "redes"
   ],
-  "author": "Jorge Ulises Useche Cuellar <naturalmenterjorge@gmail.com>, Omar Leonardo Zambrano Pulgarín <leonardoz.bta@gmail.com>",
+  "author": "Jorge Ulises Useche Cuellar <naturalmenterjorge@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.1",

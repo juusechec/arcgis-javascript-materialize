@@ -1,15 +1,13 @@
 {
-  "name": "circe",
+  "name": "acueducto",
   "version": "0.0.1",
-  "descripcion": "Aplicación de Parqueaderos Universidad Distrital",
+  "descripcion": "Aplicación Visor de Acueducto",
   "authors": [
-    "Jorge Ulises Useche Cuellar",
-    "Omar Leonardo Zambrano Pulgarín"
+    "Jorge Ulises Useche Cuellar"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/udistrital/parqueaderos",
+  "homepage": "http://incige.maps.arcgis.com/",
   "dependencies": {
-    "ol3": "openlayers3-dist#^3.17.1",
     "jquery": "^3.1.0",
     "sidebar-v2": "^0.3.0",
     "bootstrap": "^3.3.7",
