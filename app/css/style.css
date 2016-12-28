@@ -142,3 +142,7 @@ html, body, #map {
 .ol-popup-closer:hover {
     color: rgb(255, 56, 168);
 }
+
+#map_zoom_slider{
+  left: 66px;
+}
