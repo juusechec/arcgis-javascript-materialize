@@ -29,7 +29,7 @@
                 </li>
                 <li>
                     <a href="#profile" role="tab" class="tooltipped" data-position="right" data-delay="500" data-tooltip="Acerca de">
-                        <i class="material-icons">account_circle</i>
+                        <i class="material-icons">insert_drive_file</i>
                     </a>
                 </li>
                 <li class="disabled">
@@ -86,11 +86,40 @@
             <div class="sidebar-pane" id="profile">
                 <div class="row">
                     <div class="col s12">
-                        <div class="card teal lighten-2 ">
-                            <div class="card-content white-text">
-                                <span class="card-title">Proyecto Acueducto</span>
+                        <div class="card teal lighten-5">
+                            <div class="card-content">
+                                <span class="card-title">Reportes</span>
                             </div>
-                            <div class="card-action white-text">
+                            <div class="card-content">
+                                Dibuje sobre el mapa la geometría de influencia:
+                                <div class="row">
+                                    <ul class="col s12">
+                                        <li class="col s4">
+                                            <div id="btnDrawPoint" class="btn-floating btn-large waves-effect waves-light tooltipped grey" data-position="right" data-delay="50" data-tooltip="Punto">
+                                                <i class="large material-icons">location_on</i>
+                                            </div>
+                                        </li>
+                                        <li class="col s4">
+                                            <div id="btnDrawLine" class="btn-floating btn-large waves-effect waves-light tooltipped grey" data-position="right" data-delay="50" data-tooltip="Línea">
+                                                <i class="large material-icons">share</i>
+                                            </div>
+                                        </li>
+                                        <li class="col s4">
+                                            <div id="btnDrawPoly" class="btn-floating btn-large waves-effect waves-light tooltipped grey" data-position="right" data-delay="50" data-tooltip="Polígono">
+                                                <i class="large material-icons">signal_cellular_null</i>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div id="test1" class="input-field col s12">
+                                        <!-- <i class="material-icons prefix">settings_overscan</i> -->
+                                        <i class="material-icons prefix">select_all</i>
+                                        <input id="icon_prefix" type="text" class="validate">
+                                        <label for="icon_prefix">Buffer (metros)</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card-action">
                                 <p>Párrafo</p>
                             </div>
                         </div>
@@ -116,15 +145,6 @@
 
     <div id="btnDelete" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Eliminar">
         <i class="large material-icons">delete</i>
-    </div>
-    <div id="btnDrawLine" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Línea">
-        <i class="large material-icons">share</i>
-    </div>
-    <div id="btnDrawPoly" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Polígono">
-        <i class="large material-icons">signal_cellular_null</i>
-    </div>
-    <div id="btnDrawPoint" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Punto">
-        <i class="large material-icons">location_on</i>
     </div>
     <div id="btnEdit" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Editar">
         <i class="large material-icons">edit</i>

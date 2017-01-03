@@ -1,1 +1,5 @@
-var sidebar = $('#sidebar').sidebar();
+
+$(document).ready(function(){
+  var sidebar = $('#sidebar').sidebar();
+  $('.carousel').carousel();
+});
