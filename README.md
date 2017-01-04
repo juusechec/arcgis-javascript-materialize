@@ -1,4 +1,4 @@
-#Visor de datos geográficos
+#Visor de datos geográficos del acueducto
 
 ##Requerimientos:
 -----------------
@@ -33,4 +33,3 @@ Para más comandos?
 ```bash
 $ ./run --help
 ```
-
