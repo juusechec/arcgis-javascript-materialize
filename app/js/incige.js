@@ -31,6 +31,7 @@ require([
         //zoom: 2
     })
     window.map = map
+    window.mapa = map
     configBufferTool()
 
     map.on('load', createDrawToolbar)
@@ -53,7 +54,7 @@ require([
     //   }))
     // }
 
-    //map.addLayer(new ArcGISTiledMapServiceLayer('https://services7.arcgis.com/lUZlLTBKH3INlBpk/arcgis/rest/services/IRSP_V1/MapServer'))
+    map.addLayer(new ArcGISTiledMapServiceLayer('https://services7.arcgis.com/lUZlLTBKH3INlBpk/arcgis/rest/services/IRSP_V1/MapServer'))
 
 })
 
@@ -67,7 +68,7 @@ function configBufferTool() {
     ) {
         window.esriConfig = esriConfig
         esriConfig.defaults.geometryService = new GeometryService('https://utility.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer')
-        esriConfig.defaults.io.proxyUrl = '/proxy/'
+        esriConfig.defaults.io.proxyUrl = '/arcgis/proxy.php'
         esriConfig.defaults.io.alwaysUseProxy = false
     })
 }
@@ -260,4 +261,37 @@ function applyBuffer(evt) {
 function displayMessage(msj) {
     $('#message-modal1').html(msj)
     $('#modal1').modal('open')
+}
+
+function printMap() {
+    require([
+        'esri/tasks/PrintTask',
+        'esri/tasks/PrintParameters',
+        'esri/tasks/PrintTemplate'
+    ], function(
+        PrintTask,
+        PrintParameters,
+        PrintTemplate
+      ) {
+        var url = 'http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task'
+        var printTask = new PrintTask(url)
+
+        var template = new PrintTemplate()
+        template.exportOptions = {
+            width: 500,
+            height: 400,
+            dpi: 96
+        }
+        template.format = 'PNG32'
+        template.layout = 'MAP_ONLY'
+        template.preserveScale = false
+
+        var params = new PrintParameters()
+        params.map = map
+        params.template = template
+
+        printTask.execute(params, function(response) {
+            console.log(response.url)
+        })
+    })
 }
