@@ -16,6 +16,10 @@ html, body, #map {
     padding: 0;
 }
 
+#sidebar {
+    z-index: 100;
+}
+
 .sidebar-content, .sidebar-pane {
     padding: 0;
     margin: 0;
@@ -90,17 +94,11 @@ html, body, #map {
     left: 20px;
 }
 
-#btnDrawPoint {
+#btnDrawPoint {}
 
-}
+#btnDrawLine {}
 
-#btnDrawLine {
-
-}
-
-#btnDrawPoly {
-
-}
+#btnDrawPoly {}
 
 .ol-popup {
     display: inline-block;
@@ -151,52 +149,52 @@ html, body, #map {
     color: rgb(255, 56, 168);
 }
 
-#map_zoom_slider{
-  left: 66px;
+#map_zoom_slider {
+    left: 66px;
 }
 
 .esriSignInDialog {
-  background-color: #fafafa;
-  border-radius: 2px;
-  box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14),0 3px 14px 2px rgba(0,0,0,0.12),0 5px 5px -3px rgba(0,0,0,0.3);
+    background-color: #fafafa;
+    border-radius: 2px;
+    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
 }
 
-.esriSignInDialog > .dijitDialogPaneContentArea {
-  /*background-color: white;*/
+.esriSignInDialog>.dijitDialogPaneContentArea {
+    /*background-color: white;*/
 }
 
-.esriSignInDialog > * > form {
-  /*background-color: black;*/
-  margin: 20px;
+.esriSignInDialog>*>form {
+    /*background-color: black;*/
+    margin: 20px;
 }
 
 .esriSignInDialog .dijitValidationContainer {
-  display: none;
+    display: none;
 }
 
 .esriSignInDialog .dijitDialogTitleBar {
-  display: none;
+    display: none;
 }
 
 .esriSignInDialog .dijitToggleButtonIconChar {
-  display: none;
+    display: none;
 }
 
 .esriSignInDialog .dijitOffScreen {
-  display: none;
+    display: none;
 }
 
 .esriSignInDialog .dijitButtonContents {
-  /*background-color: #ccc;*/
-  border-radius: 10px;
-  padding: 10px 18px 10px 18px;
-  margin-left: 0px;
-  text-transform: uppercase;
+    /*background-color: #ccc;*/
+    border-radius: 10px;
+    padding: 10px 18px 10px 18px;
+    margin-left: 0px;
+    text-transform: uppercase;
 }
 
 .esriSignInDialog .dijitButtonContents:hover {
-  transition: .3s ease-out;
-  will-change: opacity, transform;
-  background-color: rgba(0,0,0,0.1);
-  cursor: pointer;
+    transition: .3s ease-out;
+    will-change: opacity, transform;
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
