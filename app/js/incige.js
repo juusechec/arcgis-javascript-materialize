@@ -263,7 +263,7 @@ function displayMessage(msj) {
     $('#modal1').modal('open')
 }
 
-function printMap() {
+function printMap(evt) {
     require([
         'esri/tasks/PrintTask',
         'esri/tasks/PrintParameters',
@@ -292,6 +292,9 @@ function printMap() {
 
         printTask.execute(params, function(response) {
             console.log(response.url)
+            var urlImagen = response.url
+            var urlWebService = 'http://192.168.69.69:5000/reporte/pdf?url_imagen=' + urlImagen
+            window.open(urlWebService, '_blank')
         })
     })
 }

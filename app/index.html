@@ -17,7 +17,6 @@
 </head>
 
 <body>
-    <!--http://dbauszus-webmaps.appspot.com/ol3-wfs-t-->
     <!-- Sidebar V2 -->
     <div id="sidebar" class="sidebar collapsed">
         <!-- Nav tabs -->
@@ -139,6 +138,11 @@
                                                       <i class="material-icons right">send</i>
                                                     </button>
                                                 </div>
+                                                <div class="input-field col s12">
+                                                    <button class="btn waves-effect waves-light grey" type="submit" name="action" onclick="printMap(event)">Generar Reporte
+                                                      <i class="material-icons right">print</i>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </form>
                                     </div>
@@ -169,7 +173,7 @@
     <!-- end #sidebar -->
 
     <div id="map" class="sidebar-map"></div>
-    <!--https://design.google.com/icons/#ic_speaker_notes-->
+    <!-- https://design.google.com/icons/#ic_speaker_notes -->
 
     <!-- Menu -->
     <div id="btnDelete" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Eliminar">
