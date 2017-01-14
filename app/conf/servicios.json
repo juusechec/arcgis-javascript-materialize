@@ -22,7 +22,7 @@
         "layerId": "0",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 40000,
         "fields": [{
             "field": "LAcCRed",
             "alias": "Categoría Red"
@@ -36,7 +36,7 @@
         "layerId": "1",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 1500,
         "fields": [{
             "field": "",
             "alias": ""
@@ -47,7 +47,7 @@
         "layerId": "2",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 8000,
         "fields": [{
             "field": "",
             "alias": ""
@@ -58,7 +58,7 @@
         "layerId": "3",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 1000,
         "fields": [{
             "field": "",
             "alias": ""
@@ -69,7 +69,7 @@
         "layerId": "4",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 20000,
         "fields": [{
             "field": "",
             "alias": ""
@@ -80,7 +80,7 @@
         "layerId": "5",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 1250,
         "fields": [{
             "field": "",
             "alias": ""
@@ -91,7 +91,7 @@
         "layerId": "6",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 10000,
         "fields": [{
             "field": "",
             "alias": ""
@@ -102,7 +102,7 @@
         "layerId": "7",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 500000000,
         "fields": [{
             "field": "",
             "alias": ""
@@ -113,7 +113,7 @@
         "layerId": "8",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 4000,
         "fields": [{
             "field": "",
             "alias": ""
@@ -124,7 +124,7 @@
         "layerId": "9",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 2500,
         "fields": [{
             "field": "",
             "alias": ""
@@ -135,7 +135,7 @@
         "layerId": "10",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 3000,
         "fields": [{
             "field": "",
             "alias": ""
@@ -146,7 +146,7 @@
         "layerId": "11",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 1000,
         "fields": [{
             "field": "",
             "alias": ""
@@ -157,7 +157,7 @@
         "layerId": "12",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 4000,
         "fields": [{
             "field": "",
             "alias": ""
@@ -168,7 +168,7 @@
         "layerId": "13",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 1000,
         "fields": [{
             "field": "",
             "alias": ""
@@ -179,7 +179,7 @@
         "layerId": "14",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 10000,
         "fields": [{
             "field": "",
             "alias": ""
@@ -190,7 +190,7 @@
         "layerId": "15",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 2000,
         "fields": [{
             "field": "",
             "alias": ""
@@ -201,7 +201,7 @@
         "layerId": "16",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 20000,
         "fields": [{
             "field": "",
             "alias": ""
@@ -212,7 +212,7 @@
         "layerId": "17",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 15000,
         "fields": [{
             "field": "",
             "alias": ""
@@ -223,7 +223,7 @@
         "layerId": "18",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 8000,
         "fields": [{
             "field": "",
             "alias": ""
@@ -234,18 +234,18 @@
         "layerId": "19",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 800,
         "fields": [{
             "field": "",
             "alias": ""
         }]
     }, {
-        "name": "Cajas Inspección",
+        "name": "Cajas Inspección ¿Telefónica?",
         "id": "Cajas_Inspeccion_1",
         "layerId": "20",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 3000,
         "fields": [{
             "field": "",
             "alias": ""
@@ -256,7 +256,7 @@
         "layerId": "21",
         "enable": true,
         "minScale": 0,
-        "maxScale": 500,
+        "maxScale": 10000,
         "fields": [{
             "field": "",
             "alias": ""

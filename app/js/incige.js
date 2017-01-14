@@ -100,6 +100,10 @@ function createMap() {
         //         featureLayers[i].setMaxAllowableOffset(window.maxOffset)
         //     }
         // })
+        window.mapFeatureLayerObjects = new Array()
+        map.on('zoom-end', function() {
+            checkVisibilityAtScale()
+        })
 
         var servicios = window.servicios
         for (var i = 0; i < servicios.length; i++) {
@@ -115,7 +119,6 @@ function createMap() {
                         if (layer.enable) {
                             var url = servicio.url + '/' + layer.layerId
                             var infoTemplate = new InfoTemplate("${state_name}", "Population (2000):  ${pop2000:NumberFormat}")
-                            console.log('layer.maxScale', layer.maxScale);
                             var featureLayer = new FeatureLayer(url, {
                                 id: layer.id,
                                 mode: FeatureLayer[servicio.mode],
@@ -123,22 +126,16 @@ function createMap() {
                                 infoTemplate: infoTemplate,
                                 // maxAllowableOffset: calcOffset()
                             })
-                            featureLayer.setMaxScale(layer.maxScale)
-                            featureLayer.setMinScale(layer.minScale)
-                            featureLayer.setScaleRange(500, 600)
-                            //window.mapFeatureLayers.push(capa)
+                            window.mapFeatureLayerObjects.push(layer)
+                            // featureLayer.setMaxScale(layer.maxScale)
+                            // featureLayer.setMinScale(layer.minScale)
                             map.addLayer(featureLayer)
-                            featureLayer.setScaleRange(500, 600)
-                            featureLayer.setMaxScale(layer.maxScale)
-                            featureLayer.setMinScale(layer.minScale)
-                            featureLayer.setVisibility(false)
                         }
                     }
-
-
                 }
             }
         }
+        checkVisibilityAtScale()
     })
 }
 
@@ -226,6 +223,20 @@ function addToMap(evt) {
 //     console.log('map.extent.getWidth() / map.width', map.extent.getWidth() / map.width)
 //     return (map.extent.getWidth() / map.width)
 // }
+
+// https://developers.arcgis.com/javascript/3/jssamples/fl_performance.html
+function checkVisibilityAtScale() {
+    for (var i = 0; i < window.mapFeatureLayerObjects.length; i++) {
+        var scale = map.getScale()
+        var layer = window.mapFeatureLayerObjects[i]
+        if (scale >= layer.minScale && scale <= layer.maxScale) {
+            map.getLayer(layer.id).setVisibility(true)
+        } else {
+            console.log('false', layer.id, scale, layer.minScale, layer.maxScale, layer.minScale >= scale, scale <= layer.maxScale)
+            map.getLayer(layer.id).setVisibility(false)
+        }
+    }
+}
 
 function onClickButtonToolbar(Draw, type) {
     toolbar.activate(Draw[type])
