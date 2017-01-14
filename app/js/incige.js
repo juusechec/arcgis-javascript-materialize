@@ -113,12 +113,11 @@ function createMap() {
                     var arcGISTiledMapServiceLayer = new ArcGISTiledMapServiceLayer(servicio.url)
                     map.addLayer(arcGISTiledMapServiceLayer)
                 } else if (servicio.serviceType === 'FeatureServer') {
-
                     for (var i = 0; i < servicio.layers.length; i++) {
                         var layer = servicio.layers[i]
                         if (layer.enable) {
                             var url = servicio.url + '/' + layer.layerId
-                            var infoTemplate = new InfoTemplate("${state_name}", "Population (2000):  ${pop2000:NumberFormat}")
+                            var infoTemplate = new InfoTemplate('${state_name}', 'Population (2000):  ${pop2000:NumberFormat}')
                             var featureLayer = new FeatureLayer(url, {
                                 id: layer.id,
                                 mode: FeatureLayer[servicio.mode],
@@ -136,6 +135,8 @@ function createMap() {
             }
         }
         checkVisibilityAtScale()
+        //add the legend
+        createLeyend()
     })
 }
 
@@ -151,6 +152,31 @@ function configBufferTool() {
         esriConfig.defaults.geometryService = new GeometryService('https://utility.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer')
         esriConfig.defaults.io.proxyUrl = '/arcgis/proxy.php'
         esriConfig.defaults.io.alwaysUseProxy = false
+    })
+}
+
+function createLeyend() {
+    require([
+        'dojo/_base/array',
+        'esri/dijit/Legend'
+    ], function(
+        arrayUtils,
+        Legend
+    ) {
+        var layerInfo = arrayUtils.map(window.mapFeatureLayerObjects, function(layer, index) {
+            return {
+                layer: map.getLayer(layer.id),
+                title: layer.name
+            }
+        })
+        console.log('layerInfo', layerInfo)
+        if (layerInfo.length > 0) {
+            var legendDijit = new Legend({
+                map: map,
+                layerInfos: layerInfo
+            }, "legendDiv")
+            legendDijit.startup()
+        }
     })
 }
 
@@ -232,7 +258,6 @@ function checkVisibilityAtScale() {
         if (scale >= layer.minScale && scale <= layer.maxScale) {
             map.getLayer(layer.id).setVisibility(true)
         } else {
-            console.log('false', layer.id, scale, layer.minScale, layer.maxScale, layer.minScale >= scale, scale <= layer.maxScale)
             map.getLayer(layer.id).setVisibility(false)
         }
     }

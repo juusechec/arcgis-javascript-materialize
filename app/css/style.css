@@ -198,3 +198,11 @@ html, body, #map {
     background-color: rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
+
+#legendDiv .esriLegendLayerLabel {
+    display: none;
+}
+
+#legendDiv td {
+    padding: 0;
+}

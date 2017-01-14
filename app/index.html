@@ -28,8 +28,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#profile" role="tab" class="tooltipped" data-position="right" data-delay="500" data-tooltip="Acerca de">
+                    <a href="#reportes" role="tab" class="tooltipped" data-position="right" data-delay="500" data-tooltip="Generación de Reportes">
                         <i class="material-icons">insert_drive_file</i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#leyenda" role="tab" class="tooltipped" data-position="right" data-delay="500" data-tooltip="Leyenda">
+                        <i class="material-icons">list</i>
                     </a>
                 </li>
                 <li class="disabled">
@@ -84,13 +89,14 @@
                 </ul>
             </div>
             <!-- end #toc -->
-            <div class="sidebar-pane" id="profile">
+            <div class="sidebar-pane" id="reportes">
                 <div class="row">
                     <div class="col s12">
                         <div class="card teal lighten-5">
                             <div class="card-content">
                                 <span class="card-title">Reportes</span>
                             </div>
+                            <!-- end .card-action -->
                             <div class="card-content">
                                 Dibuje sobre el mapa la geometría de influencia:
                                 <div class="row">
@@ -205,17 +211,32 @@
                             <div class="card-action">
                                 <p>Párrafo</p>
                             </div>
+                            <!-- end .card-action -->
                         </div>
                         <!-- end .card-content -->
                     </div>
+                    <!-- end .col .s12 -->
                 </div>
             </div>
-            <!-- end #profile -->
-            <div class="sidebar-pane" id="messages">
-                <h1 class="sidebar-header">Mensajes<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-                <p>
-                    Realizando Tracking
-                </p>
+            <!-- end #reportes -->
+            <div class="sidebar-pane" id="leyenda">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card teal lighten-5">
+                            <div class="card-content">
+                                <span class="card-title">Leyenda</span>
+                            </div>
+                            <!-- end .card-content -->
+                            <div class="card-content">
+                                <div id="legendDiv"></div>
+                            </div>
+                            <!-- end .card-content -->
+                        </div>
+                        <!-- end .card .teal .lighten-5 -->
+                    </div>
+                    <!-- end .col .s12 -->
+                </div>
+                <!-- end .row -->
             </div>
             <!-- end #messages -->
             <div class="sidebar-pane" id="settings">
