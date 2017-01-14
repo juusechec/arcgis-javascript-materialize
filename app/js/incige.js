@@ -1,62 +1,146 @@
 var map
 var toolbar
 var esriConfig
+var servicios
 
-require([
-    'esri/map',
-    'esri/layers/VectorTileLayer',
-    'esri/layers/FeatureLayer',
-    'esri/layers/ArcGISTiledMapServiceLayer',
-    'esri/geometry/Extent',
-    'esri/SpatialReference',
-    'dojo/domReady!'
-], function(
-    Map,
-    VectorTileLayer,
-    FeatureLayer,
-    ArcGISTiledMapServiceLayer,
-    Extent,
-    SpatialReference
-) {
-
-    //xmin, xmax, ymin, ymax
-    var startExtent = new Extent(-8262688.480463322, 511203.60837192694, -8233336.525747752, 520853.15207724134,
-        new SpatialReference({
-            wkid: 102100
-        }))
-
-    var map = new Map('map', {
-        //center: [-74, 4], // longitude, latitude
-        extent: startExtent,
-        //zoom: 2
+require(['dojo/request/xhr'], function(xhr) {
+    xhr('conf/servicios.json', {
+        handleAs: 'json'
+    }).then(function(data) {
+        // Do something with the handled data
+        console.log(data)
+        window.servicios = data
+        createMap()
+    }, function(err) {
+        // Handle the error condition
+        console.log("err", err)
+    }, function(evt) {
+        // Handle a progress event from the request if the
+        // browser supports XHR2
+        console.log("evt", evt)
     })
-    window.map = map
-    window.mapa = map
-    configBufferTool()
-
-    map.on('load', createDrawToolbar)
-
-    //The URL referenced in the constructor may point to a style url JSON (as in this sample)
-    //or directly to a vector tile service
-    var vtlayer = new VectorTileLayer('https://www.arcgis.com/sharing/rest/content/items/bf79e422e9454565ae0cbe9553cf6471/resources/styles/root.json')
-    map.addLayer(vtlayer)
-
-    // var fl = new FeatureLayer('https://services7.arcgis.com/lUZlLTBKH3INlBpk/arcgis/rest/services/Geodatabase_Redes_CAN/FeatureServer/0', {
-    //     mode: FeatureLayer.MODE_ONDEMAND,
-    //     // tileWidth: 200,
-    //     // tileHeight: 200
-    // })
-    // window.fl = fl
-    // map.addLayer(fl)
-    // for (var i = 0; i <= 21; i++) {
-    //   map.addLayer(new FeatureLayer('https://services7.arcgis.com/lUZlLTBKH3INlBpk/arcgis/rest/services/IRSP_V1/FeatureServer/'+i, {
-    //     mode: FeatureLayer.MODE_ONDEMAND,
-    //   }))
-    // }
-
-    map.addLayer(new ArcGISTiledMapServiceLayer('https://services7.arcgis.com/lUZlLTBKH3INlBpk/arcgis/rest/services/IRSP_V1/MapServer'))
-
 })
+
+function createMap() {
+    require([
+        'esri/map',
+        'esri/layers/VectorTileLayer',
+        'esri/layers/FeatureLayer',
+        'esri/layers/ArcGISTiledMapServiceLayer',
+        'esri/geometry/Extent',
+        'esri/SpatialReference',
+        'esri/InfoTemplate',
+        'dojo/domReady!'
+    ], function(
+        Map,
+        VectorTileLayer,
+        FeatureLayer,
+        ArcGISTiledMapServiceLayer,
+        Extent,
+        SpatialReference,
+        InfoTemplate
+    ) {
+
+        //xmin, xmax, ymin, ymax
+        var startExtent = new Extent(-8262688.480463322,
+            511203.60837192694, -8233336.525747752,
+            520853.15207724134,
+            new SpatialReference({
+                wkid: 102100
+            })
+        )
+
+        var map = new Map('map', {
+            //center: [-74, 4], // longitude, latitude
+            //zoom: 2, // zoom factor
+            extent: startExtent,
+            basemap: "topo"
+        })
+        window.map = map
+
+        // The URL referenced in the constructor may point to a style url JSON (as in this sample)
+        // or directly to a vector tile service
+        // NOT SUPPORT IN CHROME
+        // var vtlayer = new VectorTileLayer('https://www.arcgis.com/sharing/rest/content/items/bf79e422e9454565ae0cbe9553cf6471/resources/styles/root.json')
+        // map.addLayer(vtlayer)
+
+        configBufferTool()
+
+        map.on('load', createDrawToolbar)
+
+        // https://developers.arcgis.com/javascript/3/jssamples/fl_ondemand.html
+        map.infoWindow.resize(155, 75)
+
+        // var fl = new FeatureLayer('https://services7.arcgis.com/lUZlLTBKH3INlBpk/arcgis/rest/services/Geodatabase_Redes_CAN/FeatureServer/0', {
+        //     mode: FeatureLayer.MODE_ONDEMAND,
+        //     // tileWidth: 200,
+        //     // tileHeight: 200
+        // })
+        // window.fl = fl
+        // map.addLayer(fl)
+        // for (var i = 0; i <= 21; i++) {
+        //   map.addLayer(new FeatureLayer('https://services7.arcgis.com/lUZlLTBKH3INlBpk/arcgis/rest/services/IRSP_V1/FeatureServer/'+i, {
+        //     mode: FeatureLayer.MODE_ONDEMAND,
+        //   }))
+        // }
+
+        // for (var i = 10; i <= 15; i++) {
+        //   map.addLayer(new FeatureLayer('https://services7.arcgis.com/lUZlLTBKH3INlBpk/ArcGIS/rest/services/IRSP_V1/FeatureServer/'+i, {
+        //     mode: FeatureLayer.MODE_ONDEMAND,
+        //   }))
+        // }
+
+        // map.addLayer(new ArcGISTiledMapServiceLayer('https://services7.arcgis.com/lUZlLTBKH3INlBpk/arcgis/rest/services/IRSP_V1/MapServer'))
+
+        // https://developers.arcgis.com/javascript/3/jshelp/best_practices_feature_layers.html
+        // window.mapFeatureLayers = new Array()
+        // map.on('onZoomEnd', function() {
+        //     window.mapMaxOffset = calcOffset()
+        //     for (var i = 0; i < featureLayers.length; i++) {
+        //         featureLayers[i].setMaxAllowableOffset(window.maxOffset)
+        //     }
+        // })
+
+        var servicios = window.servicios
+        for (var i = 0; i < servicios.length; i++) {
+            var servicio = servicios[i]
+            if (servicio.enable) {
+                if (servicio.serviceType === 'MapServer') {
+                    var arcGISTiledMapServiceLayer = new ArcGISTiledMapServiceLayer(servicio.url)
+                    map.addLayer(arcGISTiledMapServiceLayer)
+                } else if (servicio.serviceType === 'FeatureServer') {
+
+                    for (var i = 0; i < servicio.layers.length; i++) {
+                        var layer = servicio.layers[i]
+                        if (layer.enable) {
+                            var url = servicio.url + '/' + layer.layerId
+                            var infoTemplate = new InfoTemplate("${state_name}", "Population (2000):  ${pop2000:NumberFormat}")
+                            console.log('layer.maxScale', layer.maxScale);
+                            var featureLayer = new FeatureLayer(url, {
+                                id: layer.id,
+                                mode: FeatureLayer[servicio.mode],
+                                outFields: ["*"],
+                                infoTemplate: infoTemplate,
+                                // maxAllowableOffset: calcOffset()
+                            })
+                            featureLayer.setMaxScale(layer.maxScale)
+                            featureLayer.setMinScale(layer.minScale)
+                            featureLayer.setScaleRange(500, 600)
+                            //window.mapFeatureLayers.push(capa)
+                            map.addLayer(featureLayer)
+                            featureLayer.setScaleRange(500, 600)
+                            featureLayer.setMaxScale(layer.maxScale)
+                            featureLayer.setMinScale(layer.minScale)
+                            featureLayer.setVisibility(false)
+                        }
+                    }
+
+
+                }
+            }
+        }
+    })
+}
 
 function configBufferTool() {
     require([
@@ -83,7 +167,7 @@ function createDrawToolbar(themap) {
         dom,
         on
     ) {
-        toolbar = new Draw(map)
+        window.toolbar = new Draw(map)
         toolbar.on('draw-end', addToMap)
 
         var boton = dom.byId('btnDrawPoint')
@@ -106,7 +190,7 @@ function addToMap(evt) {
         'esri/graphic',
         'esri/symbols/SimpleMarkerSymbol',
         'esri/symbols/SimpleLineSymbol',
-        'esri/symbols/SimpleFillSymbol',
+        'esri/symbols/SimpleFillSymbol'
     ], function(
         Graphic,
         SimpleMarkerSymbol,
@@ -135,6 +219,14 @@ function addToMap(evt) {
     })
 }
 
+
+// Because this is such a useful idea, it is done automatically for Feature Layers hosted by ArcGIS online.
+// function calcOffset() {
+//     //https://developers.arcgis.com/javascript/3/jsapi/featurelayer.html#maxallowableoffset
+//     console.log('map.extent.getWidth() / map.width', map.extent.getWidth() / map.width)
+//     return (map.extent.getWidth() / map.width)
+// }
+
 function onClickButtonToolbar(Draw, type) {
     toolbar.activate(Draw[type])
     map.hideZoomSlider()
@@ -142,7 +234,6 @@ function onClickButtonToolbar(Draw, type) {
     //signal.remove()
     // do something else...
 }
-
 
 function doBuffer(evtObj) {
     require([
@@ -170,11 +261,11 @@ function doBuffer(evtObj) {
         // valida parámetros
         var distance = dom.byId('buffer_distance').value
         var unit = dom.byId('buffer_unit').value
-        if (distance == '') {
+        if (distance === '') {
             displayMessage('Especifique una distancia de buffer.')
             return
         }
-        if (unit == '') {
+        if (unit === '') {
             displayMessage('Especifique una unidad de buffer.')
             return
         }
@@ -272,7 +363,7 @@ function printMap(evt) {
         PrintTask,
         PrintParameters,
         PrintTemplate
-      ) {
+    ) {
         var url = 'http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task'
         var printTask = new PrintTask(url)
 

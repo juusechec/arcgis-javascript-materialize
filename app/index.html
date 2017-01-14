@@ -111,17 +111,17 @@
                                             </div>
                                         </li>
                                     </ul>
-                                    <div class="row">
-                                        <!-- <i class="material-icons prefix">settings_overscan</i> -->
-                                        <form action="#" class="input-field col s12">
-                                            <div class="row">
-                                                <div class="input-field col s6">
-                                                    <i class="material-icons prefix">select_all</i>
-                                                    <input id="buffer_distance" type="text" class="validate">
-                                                    <label for="buffer_distance">Buffer (distancia)</label>
-                                                </div>
-                                                <div class="input-field col s6">
-                                                    <select id="buffer_unit">
+                                    <!-- end .col .s12 -->
+                                    <!-- <i class="material-icons prefix">settings_overscan</i> -->
+                                    <form action="#" class="input-field col s12">
+                                        <div class="row">
+                                            <div class="input-field col s6">
+                                                <i class="material-icons prefix">select_all</i>
+                                                <input id="buffer_distance" type="text" class="validate">
+                                                <label for="buffer_distance">Buffer (distancia)</label>
+                                            </div>
+                                            <div class="input-field col s6">
+                                                <select id="buffer_unit">
                                                       <option value="" disabled selected>Seleccione la opción</option>
                                                       <option value="UNIT_STATUTE_MILE">Millas</option>
                                                       <option value="UNIT_FOOT">Pies</option>
@@ -131,27 +131,82 @@
                                                       <option value="UNIT_US_NAUTICAL_MILE">Millas Nauticas US</option>
                                                       <!-- <option value="UNIT_DEGREE">Grados Sexagesimales</option> -->
                                                     </select>
-                                                    <label>Unidades</label>
-                                                </div>
-                                                <div class="input-field col s12">
-                                                    <button class="btn waves-effect waves-light grey" type="submit" name="action" onclick="applyBuffer(event)">Aplicar Buffer
+                                                <label>Unidades</label>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <button class="btn waves-effect waves-light grey" type="submit" name="action" onclick="applyBuffer(event)">Aplicar Buffer
                                                       <i class="material-icons right">send</i>
                                                     </button>
-                                                </div>
-                                                <div class="input-field col s12">
-                                                    <button class="btn waves-effect waves-light grey" type="submit" name="action" onclick="printMap(event)">Generar Reporte
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <button class="btn waves-effect waves-light grey" type="submit" name="action" onclick="printMap(event)">Generar Reporte
                                                       <i class="material-icons right">print</i>
                                                     </button>
+                                            </div>
+                                            <div class="input-field col s12">
+
+                                                <div class="preloader-wrapper big active">
+                                                    <div class="spinner-layer spinner-blue">
+                                                        <div class="circle-clipper left">
+                                                            <div class="circle"></div>
+                                                        </div>
+                                                        <div class="gap-patch">
+                                                            <div class="circle"></div>
+                                                        </div>
+                                                        <div class="circle-clipper right">
+                                                            <div class="circle"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="spinner-layer spinner-red">
+                                                        <div class="circle-clipper left">
+                                                            <div class="circle"></div>
+                                                        </div>
+                                                        <div class="gap-patch">
+                                                            <div class="circle"></div>
+                                                        </div>
+                                                        <div class="circle-clipper right">
+                                                            <div class="circle"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="spinner-layer spinner-yellow">
+                                                        <div class="circle-clipper left">
+                                                            <div class="circle"></div>
+                                                        </div>
+                                                        <div class="gap-patch">
+                                                            <div class="circle"></div>
+                                                        </div>
+                                                        <div class="circle-clipper right">
+                                                            <div class="circle"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="spinner-layer spinner-green">
+                                                        <div class="circle-clipper left">
+                                                            <div class="circle"></div>
+                                                        </div>
+                                                        <div class="gap-patch">
+                                                            <div class="circle"></div>
+                                                        </div>
+                                                        <div class="circle-clipper right">
+                                                            <div class="circle"></div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </form>
-                                    </div>
+                                        </div>
+                                        <!-- end .row-->
+                                    </form>
+                                    <!-- end form -->
                                 </div>
+                                <!-- end .row-->
                             </div>
                             <div class="card-action">
                                 <p>Párrafo</p>
                             </div>
                         </div>
+                        <!-- end .card-content -->
                     </div>
                 </div>
             </div>
@@ -173,19 +228,20 @@
     <!-- end #sidebar -->
 
     <div id="map" class="sidebar-map"></div>
-    <!-- https://design.google.com/icons/#ic_speaker_notes -->
 
     <!-- Menu -->
-    <div id="btnDelete" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Eliminar">
-        <i class="large material-icons">delete</i>
+    <div id="menu">
+        <!-- https://design.google.com/icons/#ic_speaker_notes -->
+        <div id="btnDelete" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Eliminar">
+            <i class="large material-icons">delete</i>
+        </div>
+        <div id="btnEdit" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Editar">
+            <i class="large material-icons">edit</i>
+        </div>
+        <div id="btnSelect" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Identificar">
+            <i class="large material-icons">speaker_notes</i>
+        </div>
     </div>
-    <div id="btnEdit" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Editar">
-        <i class="large material-icons">edit</i>
-    </div>
-    <div id="btnSelect" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Identificar">
-        <i class="large material-icons">speaker_notes</i>
-    </div>
-
     <!-- <div id="btnZoomIn" class="hide btn-floating btn-large waves-effect waves-light teal"><i class="large material-icons">add</i></div>
     <div id="btnZoomOut" class="hide btn-floating btn-large waves-effect waves-light teal"><i class="large material-icons">remove</i></div> -->
     <!-- end Menu -->

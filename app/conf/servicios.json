@@ -1,0 +1,265 @@
+[{
+    "serviceId": 1,
+    "serviceType": "MapServer",
+    "name": "IRSP V1",
+    "id": "IRSP_V1",
+    "url": "https://services7.arcgis.com/lUZlLTBKH3INlBpk/arcgis/rest/services/IRSP_V1/MapServer",
+    "opacity": 0.8,
+    "type": "ArcGISTiledMapServiceLayer",
+    "enable": false
+}, {
+    "serviceId": 2,
+    "serviceType": "FeatureServer",
+    "name": "Infraestructura de Redes de Servicios Públicos IRSP",
+    "id": "IRSP_V1 (FeatureServer)",
+    "url": "https://services7.arcgis.com/lUZlLTBKH3INlBpk/ArcGIS/rest/services/IRSP_V1/FeatureServer",
+    "type": "FeatureLayer",
+    "mode": "MODE_ONDEMAND",
+    "enable": true,
+    "layers": [{
+        "name": "Línea",
+        "id": "LAcu",
+        "layerId": "0",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "LAcCRed",
+            "alias": "Categoría Red"
+        }, {
+            "field": "SHAPE__Length",
+            "alias": "Lontitud m"
+        }]
+    }, {
+        "name": "Instalaciones Acueducto",
+        "id": "IAcu",
+        "layerId": "1",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "",
+            "alias": ""
+        }]
+    }, {
+        "name": "Línea Alcantarillado Pluvial",
+        "id": "LAPl",
+        "layerId": "2",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "",
+            "alias": ""
+        }]
+    }, {
+        "name": "Instalaciones Alcantarillado Pluvial",
+        "id": "IAPl",
+        "layerId": "3",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "",
+            "alias": ""
+        }]
+    }, {
+        "name": "Línea Alcantarillado Sanitario Combinado",
+        "id": "LASC",
+        "layerId": "4",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "",
+            "alias": ""
+        }]
+    }, {
+        "name": "Instalaciones Alcantarillado Sanitario Combinado",
+        "id": "IASC",
+        "layerId": "5",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "",
+            "alias": ""
+        }]
+    }, {
+        "name": "Torre Energía",
+        "id": "TEne",
+        "layerId": "6",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "",
+            "alias": ""
+        }]
+    }, {
+        "name": "Subestación de Energía",
+        "id": "SEne",
+        "layerId": "7",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "",
+            "alias": ""
+        }]
+    }, {
+        "name": "Red Eléctrica",
+        "id": "REle",
+        "layerId": "8",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "",
+            "alias": ""
+        }]
+    }, {
+        "name": "Postes",
+        "id": "Post",
+        "layerId": "9",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "",
+            "alias": ""
+        }]
+    }, {
+        "name": "Luminaria",
+        "id": "Lumi",
+        "layerId": "10",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "",
+            "alias": ""
+        }]
+    }, {
+        "name": "Cámara",
+        "id": "Cama",
+        "layerId": "11",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "",
+            "alias": ""
+        }]
+    }, {
+        "name": "Centro de Distribución de Pedestal",
+        "id": "CDPe",
+        "layerId": "12",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "",
+            "alias": ""
+        }]
+    }, {
+        "name": "Cajas Inspección ¿Energía?",
+        "id": "Cajas_Inspeccion",
+        "layerId": "13",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "",
+            "alias": ""
+        }]
+    }, {
+        "name": "Válvula Gas Natural",
+        "id": "VGNa",
+        "layerId": "14",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "",
+            "alias": ""
+        }]
+    }, {
+        "name": "Red Gas Natural",
+        "id": "RGNa",
+        "layerId": "15",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "",
+            "alias": ""
+        }]
+    }, {
+        "name": "Estación Gas Natural, Estaciones de Bombeo, Reductoras de presión, City Gates.",
+        "id": "EGNa",
+        "layerId": "16",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "",
+            "alias": ""
+        }]
+    }, {
+        "name": "Teléfono Público",
+        "id": "TPub",
+        "layerId": "17",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "",
+            "alias": ""
+        }]
+    }, {
+        "name": "Armarios",
+        "id": "Arma",
+        "layerId": "18",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "",
+            "alias": ""
+        }]
+    }, {
+        "name": "Apoyos de la Red de Transmisión",
+        "id": "ARTr",
+        "layerId": "19",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "",
+            "alias": ""
+        }]
+    }, {
+        "name": "Cajas Inspección",
+        "id": "Cajas_Inspeccion_1",
+        "layerId": "20",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "",
+            "alias": ""
+        }]
+    }, {
+        "name": "Red de Telecomunicaciones",
+        "id": "RTel_1",
+        "layerId": "21",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 500,
+        "fields": [{
+            "field": "",
+            "alias": ""
+        }]
+    }]
+}]
