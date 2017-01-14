@@ -53,40 +53,20 @@
         <!-- Tab panes -->
         <div class="sidebar-content">
             <div class="sidebar-pane" id="toc">
-                <ul class="collection">
-                    <li class="collection-item avatar">
-                        <img src="css/img/sotano1.png" alt="" class="circle">
-                        <span class="title">Capa 1</span>
-                        <p>Cartografía Temática<br>Capa Raster</p>
-                        <a href="#!" onclick="changeVisibility(this)" data-layer="sotano1_raster" class="secondary-content">
-                            <i class="material-icons btnEye">visibility</i>
-                        </a>
-                    </li>
-                    <li class="collection-item avatar">
-                        <i class="material-icons circle">layers</i>
-                        <span class="title">Capa 2</span>
-                        <p>Grupo Capas<br>Capa Vector</p>
-                        <a href="#!" onclick="changeVisibility(this)" data-layer="sotano1_vector" class="secondary-content">
-                            <i class="material-icons btnEye">visibility</i>
-                        </a>
-                    </li>
-                    <li class="collection-item avatar">
-                        <i class="material-icons circle green">local_parking</i>
-                        <span class="title">Capa 3</span>
-                        <p>Capas 3<br>Capa Vector</p>
-                        <a href="#!" onclick="changeVisibility(this)" data-layer="sotano1_islas_vector" class="secondary-content">
-                            <i class="material-icons btnEye">visibility</i>
-                        </a>
-                    </li>
-                    <li class="collection-item avatar">
-                        <i class="material-icons circle red">map</i>
-                        <span class="title">Google Maps Spatial</span>
-                        <p>Capa Raster</p>
-                        <a href="#!" onclick="changeVisibility(this)" data-layer="" class="secondary-content">
-                            <i class="material-icons btnEye">visibility_off</i>
-                        </a>
-                    </li>
-                </ul>
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card teal lighten-5">
+                            <div class="card-content">
+                                <span class="card-title">Tabla de Contenidos</span>
+                                <ul class="collection" id="toc-ul"></ul>
+                            </div>
+                            <!-- end .card-content -->
+                        </div>
+                        <!-- end .card .teal .lighten-5 -->
+                    </div>
+                    <!-- end .col .s12 -->
+                </div>
+                <!-- end .row -->
             </div>
             <!-- end #toc -->
             <div class="sidebar-pane" id="reportes">
@@ -96,7 +76,7 @@
                             <div class="card-content">
                                 <span class="card-title">Reportes</span>
                             </div>
-                            <!-- end .card-action -->
+                            <!-- end .card-content -->
                             <div class="card-content">
                                 Dibuje sobre el mapa la geometría de influencia:
                                 <div class="row">
@@ -208,6 +188,7 @@
                                 </div>
                                 <!-- end .row-->
                             </div>
+                            <!-- end .card-content -->
                             <div class="card-action">
                                 <p>Párrafo</p>
                             </div>

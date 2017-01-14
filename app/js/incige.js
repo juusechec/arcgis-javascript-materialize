@@ -8,16 +8,15 @@ require(['dojo/request/xhr'], function(xhr) {
         handleAs: 'json'
     }).then(function(data) {
         // Do something with the handled data
-        console.log(data)
         window.servicios = data
         createMap()
     }, function(err) {
         // Handle the error condition
-        console.log("err", err)
+        console.log('err', err)
     }, function(evt) {
         // Handle a progress event from the request if the
         // browser supports XHR2
-        console.log("evt", evt)
+        console.log('Browser supports XHR2', 'evt', evt)
     })
 })
 
@@ -137,6 +136,7 @@ function createMap() {
         checkVisibilityAtScale()
         //add the legend
         createLeyend()
+        createTOC()
     })
 }
 
@@ -177,6 +177,54 @@ function createLeyend() {
             }, "legendDiv")
             legendDijit.startup()
         }
+    })
+}
+
+function createTOC() {
+    require([
+        'dojo/dom'
+    ], function(
+        dom
+    ) {
+        var ul = dom.byId('toc-ul')
+        for (var i = 0; i < window.mapFeatureLayerObjects.length; i++) {
+            var layer = window.mapFeatureLayerObjects[i]
+            var li = '\
+            <li class="collection-item avatar">\
+                <img src="css/img/sotano1.png" alt="" class="circle">\
+                <span class="title">' + layer.name + '</span>\
+                <p>Capa ' + layer.id + '<br>Desde escala 1:' + layer.maxScale + '</p>\
+                <a href="#!" onclick="changeVisibilityLayer(this,\'' + layer.id + '\')" class="secondary-content">\
+                    <i class="material-icons btnEye">visibility</i>\
+                </a>\
+            </li>'
+            ul.innerHTML = ul.innerHTML + li
+        }
+    })
+}
+
+function changeVisibilityLayer(elem, layerId) {
+    require([
+        'dojo/query',
+        'dojo/dom'
+    ], function(
+        query,
+        dom
+    ) {
+        if (typeof(elem.estado) === 'undefined') {
+            elem.estado = true
+        }
+        var layer = map.getLayer(layerId)
+        var i = query('.material-icons', elem)[0]
+        if (elem.estado) {
+            layer.setVisibility(false)
+            i.innerHTML = 'visibility_off'
+        } else {
+            layer.setVisibility(true)
+            i.innerHTML = 'visibility'
+        }
+        elem.estado = !elem.estado
+
     })
 }
 
