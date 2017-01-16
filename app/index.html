@@ -233,20 +233,21 @@
 
     <!-- Menu -->
     <div id="menu">
-        <!-- https://design.google.com/icons/#ic_speaker_notes -->
-        <div id="btnDelete" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Eliminar">
-            <i class="large material-icons">delete</i>
+        <!-- https://design.google.com/icons -->
+        <div id="btnP1" title="Medición" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Medición">
+            <i class="large material-icons">gesture</i>
         </div>
-        <div id="btnEdit" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Editar">
-            <i class="large material-icons">edit</i>
+        <div id="btnP2" title="Medición" class="btn-floating btn-large red dropdown-button btn" data-activates="dropdown1">
+            <i class="material-icons">menu</i>
         </div>
-        <div id="btnSelect" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Identificar">
-            <i class="large material-icons">speaker_notes</i>
-        </div>
+        <!-- Dropdown Structure -->
+        <ul id='dropdown1' class='dropdown-content'>
+            <li><a href="#!">one</a></li>
+            <li><a href="#!">two</a></li>
+            <li class="divider"></li>
+            <li><a href="#!">three</a></li>
+        </ul>
     </div>
-    <!-- <div id="btnZoomIn" class="hide btn-floating btn-large waves-effect waves-light teal"><i class="large material-icons">add</i></div>
-    <div id="btnZoomOut" class="hide btn-floating btn-large waves-effect waves-light teal"><i class="large material-icons">remove</i></div> -->
-    <!-- end Menu -->
 
     <!-- Modal -->
     <!-- Modal Trigger -->
@@ -270,7 +271,7 @@
 
     <script src="//js.arcgis.com/3.19/"></script>
     <script src="js/incige.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/init.js"></script>
 </body>
 
 </html>

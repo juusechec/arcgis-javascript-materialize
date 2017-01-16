@@ -46,37 +46,37 @@ html, body, #map {
     width: 25px;
 }
 
-#btnSelect {
+#btnP1 {
     position: absolute;
     top: 20px;
     right: 20px;
 }
 
-#btnEdit {
+#btnP2 {
     position: absolute;
     top: 20px;
     right: 80px;
 }
 
-#btnC1 {
+#btnP3 {
     position: absolute;
     top: 20px;
     right: 140px;
 }
 
-#btnC2 {
+#btnP4 {
     position: absolute;
     top: 20px;
     right: 200px;
 }
 
-#btnC3 {
+#btnP5 {
     position: absolute;
     top: 20px;
     right: 260px;
 }
 
-#btnDelete {
+#btnP6 {
     position: absolute;
     top: 20px;
     right: 320px;
@@ -84,7 +84,7 @@ html, body, #map {
 
 #btnZoomIn {
     position: absolute;
-    top: 20px;
+    top: 60px;
     left: 20px;
 }
 
