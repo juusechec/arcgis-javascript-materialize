@@ -5,6 +5,7 @@
  */
 var gulp = require('gulp')
 var webserver = require('gulp-webserver')
+var minify = require('gulp-minifier')
 
 gulp.task('webserver', function() {
     gulp.src('app')
@@ -32,6 +33,19 @@ gulp.task('watch', ['sass'], function (){
   gulp.watch('./sass/**\/*.css', ['sass'])
 });
 */
+gulp.task('minify', function() {
+  return gulp.src('app/**/*').pipe(minify({
+    minify: true,
+    collapseWhitespace: true,
+    conservativeCollapse: true,
+    minifyJS: true,
+    minifyCSS: true,
+    getKeptComment: function (content, filePath) {
+        var m = content.match(/\/\*![\s\S]*?\*\//img);
+        return m && m.join('\n') + '\n' || '';
+    }
+  })).pipe(gulp.dest('dist/app'));
+})
 
 //https://github.com/andresvia/go-angular-drone/blob/master/.drone.yml
 gulp.task('default', ['webserver'], function() {
