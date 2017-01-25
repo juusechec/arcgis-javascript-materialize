@@ -158,7 +158,8 @@ function createMap() {
 
 function generateTemplateContent(layer) {
     var content = ''
-    console.log(typeof(layer.fields), layer.fields.length)
+    console.log(layer)
+    //console.log(typeof(layer.fields), layer.fields.length)
     if (typeof(layer.fields) === 'undefined' || layer.fields.length === 0) {
         // var capa = map.getLayer(layer.id)
         // var fields = capa.fields
@@ -231,8 +232,8 @@ function createTOC() {
             var li = '\
             <li class="collection-item avatar">\
                 <img src="' + imageUrl + '" alt="" class="circle">\
-                <span class="title" style="padding-right: 22px;">' + layer.name + '</span>\
-                <p>Capa ' + layer.id + '<br>Desde escala 1:' + layer.maxScale + '</p>\
+                <span class="title" style="padding-right: 22px; display: block;">' + layer.name + '</span>\
+                <p>Desde escala 1:' + layer.maxScale + '</p>\
                 <a href="#!" onclick="changeVisibilityLayer(this,\'' + layer.id + '\')" class="secondary-content">\
                     <i class="material-icons btnEye">visibility</i>\
                 </a>\
@@ -507,9 +508,9 @@ function printMap(evt) {
 
         printTask.execute(params, function(response) {
             console.log(response.url)
-            var urlImagen = response.url
+            var imageUrl = response.url
             window.generateReports(1, {
-                'urlImagen': urlImagen
+                imageUrl: imageUrl
             })
         })
     })
