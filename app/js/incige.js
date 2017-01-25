@@ -29,6 +29,7 @@ function createMap() {
         'esri/geometry/Extent',
         'esri/SpatialReference',
         'esri/InfoTemplate',
+        'esri/dijit/Scalebar',
         'dojo/domReady!'
     ], function(
         Map,
@@ -37,13 +38,14 @@ function createMap() {
         ArcGISTiledMapServiceLayer,
         Extent,
         SpatialReference,
-        InfoTemplate
+        InfoTemplate,
+        Scalebar
     ) {
 
         //xmin, xmax, ymin, ymax
-        var startExtent = new Extent(-8262688.480463322,
-            511203.60837192694, -8233336.525747752,
-            520853.15207724134,
+        var startExtent = new Extent(-8247776.0260493355,
+            513403.24603438814, -8244107.048691551,
+            515206.682170539,
             new SpatialReference({
                 wkid: 102100
             })
@@ -53,7 +55,7 @@ function createMap() {
             //center: [-74, 4], // longitude, latitude
             //zoom: 2, // zoom factor
             extent: startExtent,
-            basemap: "topo"
+            basemap: 'topo'
         })
         window.map = map
 
@@ -99,6 +101,15 @@ function createMap() {
         //         featureLayers[i].setMaxAllowableOffset(window.maxOffset)
         //     }
         // })
+
+        var scalebar = new Scalebar({
+            map: map,
+            // "dual" displays both miles and kilometers
+            // "english" is the default, which displays miles
+            // use "metric" for kilometers
+            scalebarUnit: 'dual'
+        })
+
         window.mapFeatureLayerObjects = new Array()
         map.on('zoom-end', function() {
             checkVisibilityAtScale()
@@ -116,11 +127,16 @@ function createMap() {
                         var layer = servicio.layers[i]
                         if (layer.enable) {
                             var url = servicio.url + '/' + layer.layerId
-                            var infoTemplate = new InfoTemplate('${state_name}', 'Population (2000):  ${pop2000:NumberFormat}')
+
+                            var infoTemplate = new InfoTemplate()
+                            infoTemplate.setTitle(layer.name)
+                            var content = generateTemplateContent(layer)
+                            infoTemplate.setContent(content)
+
                             var featureLayer = new FeatureLayer(url, {
                                 id: layer.id,
                                 mode: FeatureLayer[servicio.mode],
-                                outFields: ["*"],
+                                outFields: ['*'],
                                 infoTemplate: infoTemplate,
                                 // maxAllowableOffset: calcOffset()
                             })
@@ -138,6 +154,28 @@ function createMap() {
         createLeyend()
         createTOC()
     })
+}
+
+function generateTemplateContent(layer) {
+    var content = ''
+    console.log(typeof(layer.fields), layer.fields.length)
+    if (typeof(layer.fields) === 'undefined' || layer.fields.length === 0) {
+        // var capa = map.getLayer(layer.id)
+        // var fields = capa.fields
+        // for (var i = 0; i < fields.length; i++) {
+        //     var field = fields[i]
+        //     //if(typeof(noFields) === "undefined" || noFields.indexof(field.alias) < 0 ){
+        //       content += '<b>' + field.alias + ':<b> ${' + field.alias + '}'
+        //     //}
+        // }
+    } else {
+      for (var i = 0; i < layer.fields.length; i++) {
+        var field = layer.fields[i]
+        content += '<b>' + field.name + ':</b> ${' + field.alias + '} <br/>'
+      }
+      console.log(content)
+    }
+    return content
 }
 
 function configBufferTool() {
@@ -174,7 +212,7 @@ function createLeyend() {
             var legendDijit = new Legend({
                 map: map,
                 layerInfos: layerInfo
-            }, "legendDiv")
+            }, 'legendDiv')
             legendDijit.startup()
         }
     })
@@ -189,10 +227,11 @@ function createTOC() {
         var ul = dom.byId('toc-ul')
         for (var i = 0; i < window.mapFeatureLayerObjects.length; i++) {
             var layer = window.mapFeatureLayerObjects[i]
+            var imageUrl = (typeof(layer.icon) === 'undefined' || layer.icon === '') ? 'css/img/acueducto.png' : layer.icon
             var li = '\
             <li class="collection-item avatar">\
-                <img src="css/img/sotano1.png" alt="" class="circle">\
-                <span class="title">' + layer.name + '</span>\
+                <img src="' + imageUrl + '" alt="" class="circle">\
+                <span class="title" style="padding-right: 22px;">' + layer.name + '</span>\
                 <p>Capa ' + layer.id + '<br>Desde escala 1:' + layer.maxScale + '</p>\
                 <a href="#!" onclick="changeVisibilityLayer(this,\'' + layer.id + '\')" class="secondary-content">\
                     <i class="material-icons btnEye">visibility</i>\
@@ -439,6 +478,7 @@ function displayMessage(msj) {
 }
 
 function printMap(evt) {
+    document.getElementById('loading-report').style.display = 'block'
     require([
         'esri/tasks/PrintTask',
         'esri/tasks/PrintParameters',
@@ -468,8 +508,9 @@ function printMap(evt) {
         printTask.execute(params, function(response) {
             console.log(response.url)
             var urlImagen = response.url
-            var urlWebService = 'http://192.168.69.69:5000/reporte/pdf?url_imagen=' + urlImagen
-            window.open(urlWebService, '_blank')
+            window.generateReports(1, {
+                'urlImagen': urlImagen
+            })
         })
     })
 }

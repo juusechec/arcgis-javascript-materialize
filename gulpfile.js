@@ -17,7 +17,7 @@ gulp.task('webserver', function() {
             open: true,
             proxies: [{
                 source: '/arcgis',
-                target: 'http://192.168.69.69:80/arcgis',
+                target: 'http://acueducto.incige.com/arcgis',
                 options: {
                     headers: {
                         'DEVELOPER': 'juusechec'

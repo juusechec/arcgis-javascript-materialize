@@ -206,3 +206,7 @@ html, body, #map {
 #legendDiv td {
     padding: 0;
 }
+
+.esriScalebar {
+    left: 60px !important;
+}

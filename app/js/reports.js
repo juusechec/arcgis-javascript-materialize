@@ -1,24 +1,24 @@
-function generateReports() {
-    var diccionario = {
-        'A': A,
-        'B': B,
-        'num1': num1,
-        'F2': f2,
-        'raiz1': raices[0],
-        'raiz2': raices[1],
-        'c1': ValorCoef[0],
-        'c2': ValorCoef[1],
-        'exp': exp,
-
-    }
-
+function generateReports(reportNumber, opt) {
+  require(['dojo/request/xhr'], function(xhr) {
+      xhr('templates/report1.html').then(function(data) {
+        if(reportNumber === 1){
+          generateReport1(data, opt)
+        }
+      })
+  })
 }
 
-function reemplazarVariables(respuestaHTML, diccionario, listener) {
-    var htmlParseado = respuestaHTML
-    for (var i in diccionario) {
-        //var expresionRegular = new RegExp('{{' + i + '}}', 'g')
-        //htmlParseado = htmlParseado.replace(expresionRegular, diccionario[i]);
-    }
-    listener(htmlParseado)
+function generateReport1(data, opt){
+  console.log(opt.imageUrl)
+  document.getElementById('loading-report').style.display = 'none'
+  var viewData = {
+      name: 'Jonny',
+      occupation: 'GLUD',
+      imageUrl: opt.imageUrl
+  }
+  var output = Mustache.render(data, viewData)
+  console.log(output)
+
+  var w = window.open()
+  w.document.body.innerHTML = output
 }
