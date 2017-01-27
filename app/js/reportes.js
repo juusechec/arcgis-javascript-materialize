@@ -1,10 +1,10 @@
 function generateReports(reportNumber, opt) {
     require(['dojo/request/xhr'], function(xhr) {
-        xhr('templates/report1.html').then(function(data) {
-            if (reportNumber === 1) {
+        if (reportNumber === 1) {
+            xhr('templates/reporte1.html').then(function(data) {
                 generateReport1(data, opt)
-            }
-        })
+            })
+        }
     })
 }
 
@@ -14,14 +14,13 @@ function generateReport1(data, opt) {
         name: 'Jonny',
         occupation: 'GLUD',
         imageUrl: opt.imageUrl,
-        prueba: 'httphola.png',
-        prueba2: 'http:',
-        prueba3: 'http://'
+        baseUrl: window.location.origin
     }
     console.log(viewData)
     var output = Mustache.render(data, viewData)
     console.log(output)
 
-    var w = window.open('', '_blank')
-    w.document.body.innerHTML = output
+    var w = window.open('about:blank', '_blank')
+    w.document.write(output)
+    //w.document.body.innerHTML = output
 }

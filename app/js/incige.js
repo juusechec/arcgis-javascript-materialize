@@ -172,7 +172,7 @@ function generateTemplateContent(layer) {
     } else {
       for (var i = 0; i < layer.fields.length; i++) {
         var field = layer.fields[i]
-        content += '<b>' + field.name + ':</b> ${' + field.alias + '} <br/>'
+        content += '<b>' + field.alias + ':</b> ${' + field.name + '} <br/>'
       }
       console.log(content)
     }
