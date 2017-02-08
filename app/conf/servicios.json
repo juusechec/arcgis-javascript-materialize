@@ -12,126 +12,120 @@
     "serviceType": "FeatureServer",
     "name": "Infraestructura de Redes de Servicios Públicos IRSP",
     "id": "IRSP_V1 (FeatureServer)",
-    "url": "https://services7.arcgis.com/lUZlLTBKH3INlBpk/ArcGIS/rest/services/IRSP_V1/FeatureServer",
+    "url": "http://www.acueducto.com.co/wassigue5/arcgis/rest/services/METRO/METRO/FeatureServer",
     "type": "FeatureLayer",
     "mode": "MODE_ONDEMAND",
     "enable": true,
     "layers": [{
         "name": "Línea",
-        "id": "LAcu",
-        "layerId": "0",
+        "id": "METRO.LAcu",
+        "layerId": "24",
         "enable": true,
         "minScale": 0,
         "maxScale": 40000,
         "icon": "css/img/linea.jpg",
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Categoría Red",
-                "name": "LAcCRed"
+                "name": "LACCRED"
             },
             {
                 "alias": "Identificador Unico",
-                "name": "LAcCodigo"
+                "name": "LACCODIGO"
             },
             {
                 "alias": "Material",
-                "name": "LAcMateria"
+                "name": "LACMATERIA"
             },
             {
                 "alias": "Profundidad",
-                "name": "LAcProfundidad"
+                "name": "LACPROFUNDIDAD"
             },
             {
                 "alias": "Diámetro",
-                "name": "LAcDiametr"
+                "name": "LACDIAMETR"
             },
             {
                 "alias": "Costado",
-                "name": "LAcCostado"
+                "name": "LACCOSTADO"
             },
             {
                 "alias": "Precisión",
-                "name": "LAcPrecisi"
+                "name": "LACPRECISI"
             },
             {
                 "alias": "Fase",
-                "name": "LAcFase"
+                "name": "LACFASE"
             },
             {
                 "alias": "FechaCaptura",
-                "name": "LAcFCaptur"
+                "name": "LACFCAPTUR"
             },
             {
                 "alias": "EscalaCaptura",
-                "name": "LAcECaptur"
+                "name": "LACECAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "LAcRespons"
+                "name": "LACRESPONS"
             },
             {
                 "alias": "Inspector",
-                "name": "LAcInspector"
+                "name": "LACINSPECTOR"
             },
             {
                 "alias": "PuntoNumero",
-                "name": "PuntoNumero"
+                "name": "PUNTONUMERO"
             },
             {
                 "alias": "SHAPE__Length",
-                "name": "SHAPE__Length"
+                "name": "Shape__Length"
             }
         ]
     }, {
         "name": "Instalaciones Acueducto",
-        "id": "IAcu",
-        "layerId": "1",
+        "id": "METRO.IAcu",
+        "layerId": "5",
         "enable": true,
         "minScale": 0,
         "maxScale": 1500,
         "icon": "css/img/instalaciones_acueducto.jpg",
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Tipo Instalacion",
-                "name": "IAcTInstal"
+                "name": "IACTINSTAL"
             },
             {
                 "alias": "Identificador Unico",
-                "name": "IAcCodigo"
+                "name": "IACCODIGO"
             },
             {
                 "alias": "Material",
-                "name": "IAcMateria"
+                "name": "IACMATERIA"
             },
             {
                 "alias": "Precisión",
-                "name": "IAcPrecisi"
+                "name": "IACPRECISI"
             },
             {
                 "alias": "Fase",
-                "name": "IAcFase"
+                "name": "IACFASE"
             },
             {
                 "alias": "FechaCaptura",
-                "name": "IAcFCaptur"
+                "name": "IACFCAPTUR"
             },
             {
                 "alias": "EscalaCaptura",
-                "name": "IAcECaptur"
+                "name": "IACECAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "IAcRespons"
+                "name": "IACRESPONS"
             },
             {
                 "alias": "Inspector",
-                "name": "IAcInspector"
+                "name": "IACINSPECTOR"
             }
         ],
         "noFields": [{
@@ -139,71 +133,68 @@
         }]
     }, {
         "name": "Línea Alcantarillado Pluvial",
-        "id": "LAPl",
-        "layerId": "2",
+        "id": "METRO.LAPl",
+        "layerId": "23",
         "enable": true,
         "minScale": 0,
         "maxScale": 8000,
         "icon": "css/img/linea_alcantarillado_pluvial.jpg",
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Subtipo",
-                "name": "LAPSubtipo"
+                "name": "LAPSUBTIPO"
             },
             {
                 "alias": "Identificador Único",
-                "name": "LAPCodigo"
+                "name": "LAPCODIGO"
             },
             {
                 "alias": "Diámetro",
-                "name": "LAPDiamet"
+                "name": "LAPDIAMET"
             },
             {
                 "alias": "Material",
-                "name": "LAPMateri"
+                "name": "LAPMATERI"
             },
             {
                 "alias": "CotaClaveInicial",
-                "name": "LAPCCInici"
+                "name": "LAPCCINICI"
             },
             {
                 "alias": "CotaClaveFinal",
-                "name": "LAPCCFinal"
+                "name": "LAPCCFINAL"
             },
             {
                 "alias": "Precisión",
-                "name": "LAPPrecisi"
+                "name": "LAPPRECISI"
             },
             {
                 "alias": "Categoría",
-                "name": "LAPCategor"
+                "name": "LAPCATEGOR"
             },
             {
                 "alias": "Fase",
-                "name": "LAPFase"
+                "name": "LAPFASE"
             },
             {
                 "alias": "FechaCaptura",
-                "name": "LAPFCaptur"
+                "name": "LAPFCAPTUR"
             },
             {
                 "alias": "EscalaCaptura",
-                "name": "LAPECaptur"
+                "name": "LAPECAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "LAPRespons"
+                "name": "LAPRESPONS"
             },
             {
                 "alias": "Inspector",
-                "name": "LAPInspector"
+                "name": "LAPINSPECTOR"
             },
             {
                 "alias": "PuntoNumero",
-                "name": "PuntoNumero"
+                "name": "PUNTONUMERO"
             },
             {
                 "alias": "IDSAP",
@@ -235,64 +226,61 @@
             },
             {
                 "alias": "SHAPE__Length",
-                "name": "SHAPE__Length"
+                "name": "Shape__Length"
             }
         ]
     }, {
         "name": "Instalaciones Alcantarillado Pluvial",
-        "id": "IAPl",
-        "layerId": "3",
+        "id": "METRO.IAPl",
+        "layerId": "4",
         "enable": true,
         "minScale": 0,
         "maxScale": 1000,
         "icon": "css/img/instalaciones_alcantarillado_pluvial.jpg",
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Subtipo",
-                "name": "IAPSubtipo"
+                "name": "IAPSUBTIPO"
             },
             {
                 "alias": "Identificador Unico",
-                "name": "IAPCodigo"
+                "name": "IAPCODIGO"
             },
             {
                 "alias": "CotaRasante",
-                "name": "IAPCRasant"
+                "name": "IAPCRASANT"
             },
             {
                 "alias": "Material",
-                "name": "IAPMateri"
+                "name": "IAPMATERI"
             },
             {
                 "alias": "Precisión",
-                "name": "IAPPrecisi"
+                "name": "IAPPRECISI"
             },
             {
                 "alias": "Fase",
-                "name": "IAPFase"
+                "name": "IAPFASE"
             },
             {
                 "alias": "FechaCaptura",
-                "name": "IAPFCaptur"
+                "name": "IAPFCAPTUR"
             },
             {
                 "alias": "EscalaCaptura",
-                "name": "IAPECaptur"
+                "name": "IAPECAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "IAPRespons"
+                "name": "IAPRESPONS"
             },
             {
                 "alias": "IAPInspector",
-                "name": "IAPInspector"
+                "name": "IAPINSPECTOR"
             },
             {
                 "alias": "PuntoNumero",
-                "name": "PuntoNumero"
+                "name": "PUNTONUMERO"
             }
         ],
         "noFields": [{
@@ -300,315 +288,300 @@
         }]
     }, {
         "name": "Línea Alcantarillado Sanitario Combinado",
-        "id": "LASC",
-        "layerId": "4",
+        "id": "METRO.LASC",
+        "layerId": "22",
         "enable": true,
         "minScale": 0,
         "maxScale": 20000,
         "icon": "css/img/linea_alcantarillado_sanitario_combinado.jpg",
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Subtipo",
-                "name": "LASSubtipo"
+                "name": "LASSUBTIPO"
             },
             {
                 "alias": "Identificador Único",
-                "name": "LASCodigo"
+                "name": "LASCODIGO"
             },
             {
                 "alias": "DiametroNominal",
-                "name": "LASDNomina"
+                "name": "LASDNOMINA"
             },
             {
                 "alias": "Material",
-                "name": "LASMateria"
+                "name": "LASMATERIA"
             },
             {
                 "alias": "CotaClaveInicial",
-                "name": "LASCCInici"
+                "name": "LASCCINICI"
             },
             {
                 "alias": "CotaClaveFinal",
-                "name": "LASCCFinal"
+                "name": "LASCCFINAL"
             },
             {
                 "alias": "Precisión",
-                "name": "LASPrecisi"
+                "name": "LASPRECISI"
             },
             {
                 "alias": "Categoría",
-                "name": "LASCategor"
+                "name": "LASCATEGOR"
             },
             {
                 "alias": "Tipo Sistema",
-                "name": "LASTSistem"
+                "name": "LASTSISTEM"
             },
             {
                 "alias": "Fase",
-                "name": "LASFase"
+                "name": "LASFASE"
             },
             {
                 "alias": "FechaCaptura",
-                "name": "LASFCaptur"
+                "name": "LASFCAPTUR"
             },
             {
                 "alias": "EscalaCaptura",
-                "name": "LASECaptur"
+                "name": "LASECAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "LASRespons"
+                "name": "LASRESPONS"
             },
             {
                 "alias": "Inspector",
-                "name": "LASInspector"
+                "name": "LASINSPECTOR"
             },
             {
                 "alias": "PuntoNumero",
-                "name": "PuntoNumero"
+                "name": "PUNTONUMERO"
             },
             {
                 "alias": "SHAPE__Length",
-                "name": "SHAPE__Length"
+                "name": "Shape__Length"
             }
         ]
     }, {
         "name": "Instalaciones Alcantarillado Sanitario Combinado",
-        "id": "IASC",
-        "layerId": "5",
+        "id": "METRO.IASC",
+        "layerId": "3",
         "enable": true,
         "minScale": 0,
         "maxScale": 1250,
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Subtipo",
-                "name": "IASSubtipo"
+                "name": "IASSUBTIPO"
             },
             {
                 "alias": "Identificador Unico",
-                "name": "IASCodigo"
+                "name": "IASCODIGO"
             },
             {
                 "alias": "TipoSistema",
-                "name": "IASTSistem"
+                "name": "IASTSISTEM"
             },
             {
                 "alias": "CotaRasante",
-                "name": "IASCRasant"
+                "name": "IASCRASANT"
             },
             {
                 "alias": "Material",
-                "name": "IASMateria"
+                "name": "IASMATERIA"
             },
             {
                 "alias": "Precisión",
-                "name": "IASPrecisi"
+                "name": "IASPRECISI"
             },
             {
                 "alias": "Fase",
-                "name": "IASFase"
+                "name": "IASFASE"
             },
             {
                 "alias": "FechaCaptura",
-                "name": "IASFCaptur"
+                "name": "IASFCAPTUR"
             },
             {
                 "alias": "EscalaCaptura",
-                "name": "IASECaptur"
+                "name": "IASECAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "IASRespons"
+                "name": "IASRESPONS"
             },
             {
                 "alias": "Inspector",
-                "name": "IASInspector"
+                "name": "IASINSPECTOR"
             },
             {
                 "alias": "PuntoNumero",
-                "name": "PuntoNumero"
+                "name": "PUNTONUMERO"
             }
         ]
     }, {
         "name": "Torre Energía",
-        "id": "TEne",
-        "layerId": "6",
+        "id": "METRO.TEne",
+        "layerId": "0",
         "enable": true,
         "minScale": 0,
         "maxScale": 10000,
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Fase Constructiva",
-                "name": "FConstr"
+                "name": "FCONSTR"
             },
             {
                 "alias": "Escala Captura",
-                "name": "ECaptur"
+                "name": "ECAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "Respons"
+                "name": "RESPONS"
             },
             {
                 "alias": "Identificador Único",
-                "name": "TEnCodigo"
+                "name": "TENCODIGO"
             },
             {
                 "alias": "Nombre",
-                "name": "TEnNombre"
+                "name": "TENNOMBRE"
             },
             {
                 "alias": "Precisión",
-                "name": "TEnPrecisi"
+                "name": "TENPRECISI"
             },
             {
                 "alias": "Fecha Corte",
-                "name": "TEnFCorte"
+                "name": "TENFCORTE"
             },
             {
                 "alias": "Inspector",
-                "name": "TEInspector"
+                "name": "TEINSPECTOR"
             },
             {
                 "alias": "PuntoNumero",
-                "name": "PuntoNumero"
+                "name": "PUNTONUMERO"
             }
         ]
     }, {
         "name": "Subestación de Energía",
-        "id": "SEne",
-        "layerId": "7",
+        "id": "METRO.SEne",
+        "layerId": "1",
         "enable": true,
         "minScale": 0,
         "maxScale": 500000000,
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Fase Constructiva",
-                "name": "FConstr"
+                "name": "FCONSTR"
             },
             {
                 "alias": "Escala Captura",
-                "name": "ECaptur"
+                "name": "ECAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "Respons"
+                "name": "RESPONS"
             },
             {
                 "alias": "Identificador Único",
-                "name": "SEnCodigo"
+                "name": "SENCODIGO"
             },
             {
                 "alias": "Nombre",
-                "name": "SEnNombre"
+                "name": "SENNOMBRE"
             },
             {
                 "alias": "Dirección",
-                "name": "SEnDirecci"
+                "name": "SENDIRECCI"
             },
             {
                 "alias": "Precision",
-                "name": "SEnPrecisi"
+                "name": "SENPRECISI"
             },
             {
                 "alias": "Fecha Corte",
-                "name": "SEnFCorte"
+                "name": "SENFCORTE"
             },
             {
                 "alias": "Inspector",
-                "name": "SEInspector"
+                "name": "SEINSPECTOR"
             },
             {
                 "alias": "PuntoNumero",
-                "name": "PuntoNumero"
+                "name": "PUNTONUMERO"
             }
         ]
     }, {
         "name": "Red Eléctrica",
-        "id": "REle",
-        "layerId": "8",
+        "id": "METRO.REle",
+        "layerId": "21",
         "enable": true,
         "minScale": 0,
         "maxScale": 4000,
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Fase Constructiva",
-                "name": "FConstr"
+                "name": "FCONSTR"
             },
             {
                 "alias": "Escala Captura",
-                "name": "ECaptur"
+                "name": "ECAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "Respons"
+                "name": "RESPONS"
             },
             {
                 "alias": "Nivel de Tensión",
-                "name": "RElNTensio"
+                "name": "RELNTENSIO"
             },
             {
                 "alias": "Identificador Único",
-                "name": "RElCodigo"
+                "name": "RELCODIGO"
             },
             {
                 "alias": "Nombre",
-                "name": "REINombre"
+                "name": "REINOMBRE"
             },
             {
                 "alias": "Tensión Nominal",
-                "name": "RElTNomina"
+                "name": "RELTNOMINA"
             },
             {
                 "alias": "Tipo de Red",
-                "name": "RElTRed"
+                "name": "RELTRED"
             },
             {
                 "alias": "Subestación Inicial",
-                "name": "RElSInicia"
+                "name": "RELSINICIA"
             },
             {
                 "alias": "Subestación Final",
-                "name": "RElSFinal"
+                "name": "RELSFINAL"
             },
             {
                 "alias": "Profundidad",
-                "name": "RElProfund"
+                "name": "RELPROFUND"
             },
             {
                 "alias": "Precisión",
-                "name": "RElPrecisi"
+                "name": "RELPRECISI"
             },
             {
                 "alias": "Longitud Tramo",
-                "name": "RElLTramo"
+                "name": "RELLTRAMO"
             },
             {
                 "alias": "Fecha Corte",
-                "name": "REIFCorte"
+                "name": "REIFCORTE"
             },
             {
                 "alias": "Inspector",
-                "name": "REIInspector"
+                "name": "REIINSPECTOR"
             },
             {
                 "alias": "PuntoNumero",
-                "name": "PuntoNumero"
+                "name": "PUNTONUMERO"
             },
             {
                 "alias": "Shape__Length",
@@ -617,422 +590,401 @@
         ]
     }, {
         "name": "Postes",
-        "id": "Post",
-        "layerId": "9",
+        "id": "METRO.Post",
+        "layerId": "12",
         "enable": true,
         "minScale": 0,
         "maxScale": 2500,
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Fase Constructiva",
-                "name": "FConstr"
+                "name": "FCONSTR"
             },
             {
                 "alias": "Escala Captura",
-                "name": "ECaptur"
+                "name": "ECAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "Respons"
+                "name": "RESPONS"
             },
             {
                 "alias": "Identificador Único",
-                "name": "PosCodigo"
+                "name": "POSCODIGO"
             },
             {
                 "alias": "Dirección",
-                "name": "PosDirecci"
+                "name": "POSDIRECCI"
             },
             {
                 "alias": "Precisión",
-                "name": "PosPrecisi"
+                "name": "POSPRECISI"
             },
             {
                 "alias": "Fecha Corte",
-                "name": "PosFCorte"
+                "name": "POSFCORTE"
             },
             {
                 "alias": "Nivel de tension",
-                "name": "PosNivTens"
+                "name": "POSNIVTENS"
             },
             {
                 "alias": "Inspector",
-                "name": "PosInspector"
+                "name": "POSINSPECTOR"
             },
             {
                 "alias": "PuntoNumero",
-                "name": "PuntoNumero"
+                "name": "PUNTONUMERO"
             }
         ]
     }, {
         "name": "Luminaria",
-        "id": "Lumi",
-        "layerId": "10",
+        "id": "METRO.Lumi",
+        "layerId": "2",
         "enable": true,
         "minScale": 0,
         "maxScale": 3000,
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Fase Constructiva",
-                "name": "FConstr"
+                "name": "FCONSTR"
             },
             {
                 "alias": "Escala Captura",
-                "name": "ECaptur"
+                "name": "ECAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "Respons"
+                "name": "RESPONS"
             },
             {
                 "alias": "Identificador Único",
-                "name": "LumCodigo"
+                "name": "LUMCODIGO"
             },
             {
                 "alias": "Nombre",
-                "name": "LumNombre"
+                "name": "LUMNOMBRE"
             },
             {
                 "alias": "Dirección",
-                "name": "LumDirecci"
+                "name": "LUMDIRECCI"
             },
             {
                 "alias": "Precisión",
-                "name": "LumPrecisi"
+                "name": "LUMPRECISI"
             },
             {
                 "alias": "Fecha Captura",
-                "name": "LumFCaptur"
+                "name": "LUMFCAPTUR"
             },
             {
                 "alias": "Inspector",
-                "name": "LumInspector"
+                "name": "LUMINSPECTOR"
             },
             {
                 "alias": "PuntoNumero",
-                "name": "PuntoNumero"
+                "name": "PUNTONUMERO"
             }
         ]
     }, {
         "name": "Cámara",
-        "id": "Cama",
-        "layerId": "11",
+        "id": "METRO.Cama",
+        "layerId": "15",
         "enable": true,
         "minScale": 0,
         "maxScale": 1000,
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Fase Constructiva",
-                "name": "FConstr"
+                "name": "FCONSTR"
             },
             {
                 "alias": "Escala Captura",
-                "name": "ECaptur"
+                "name": "ECAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "Respons"
+                "name": "RESPONS"
             },
             {
                 "alias": "Identificador único",
-                "name": "CamCodigo"
+                "name": "CAMCODIGO"
             },
             {
                 "alias": "Dirección",
-                "name": "CamDirecci"
+                "name": "CAMDIRECCI"
             },
             {
                 "alias": "Precisión",
-                "name": "CamPrecisi"
+                "name": "CAMPRECISI"
             },
             {
                 "alias": "Fecha Corte",
-                "name": "CamFCorte"
+                "name": "CAMFCORTE"
             },
             {
                 "alias": "Inspector",
-                "name": "CamInspector"
+                "name": "CAMINSPECTOR"
             },
             {
                 "alias": "PuntoNumero",
-                "name": "PuntoNumero"
+                "name": "PUNTONUMERO"
             }
         ]
     }, {
         "name": "Centro de Distribución de Pedestal",
-        "id": "CDPe",
-        "layerId": "12",
+        "id": "METRO.CDPe",
+        "layerId": "7",
         "enable": true,
         "minScale": 0,
         "maxScale": 4000,
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Fase Constructiva",
-                "name": "FConstr"
+                "name": "FCONSTR"
             },
             {
                 "alias": "Escala Captura",
-                "name": "ECaptur"
+                "name": "ECAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "Respons"
+                "name": "RESPONS"
             },
             {
                 "alias": "Identificador Único",
-                "name": "CDPCodigo"
+                "name": "CDPCODIGO"
             },
             {
                 "alias": "Nombre",
-                "name": "CDPNombre"
+                "name": "CDPNOMBRE"
             },
             {
                 "alias": "Dirección",
-                "name": "CDPDirecci"
+                "name": "CDPDIRECCI"
             },
             {
                 "alias": "Capacidad",
-                "name": "CDPCapacid"
+                "name": "CDPCAPACID"
             },
             {
                 "alias": "Precisión",
-                "name": "CDPPrecisi"
+                "name": "CDPPRECISI"
             },
             {
                 "alias": "Fecha Corte",
-                "name": "CDPFCorte"
+                "name": "CDPFCORTE"
             },
             {
                 "alias": "Inspector",
-                "name": "CDPInspector"
+                "name": "CDPINSPECTOR"
             },
             {
                 "alias": "PuntoNumero",
-                "name": "PuntoNumero"
+                "name": "PUNTONUMERO"
             }
         ]
     }, {
         "name": "Cajas Inspección Energía",
-        "id": "Cajas_Inspeccion",
-        "layerId": "13",
+        "id": "METRO.Cajas_Inspeccion",
+        "layerId": "9",
         "enable": true,
         "minScale": 0,
         "maxScale": 1000,
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Identificador Único",
-                "name": "CInsCodigo"
+                "name": "CINSCODIGO"
             },
             {
                 "alias": "CódigoCentral",
-                "name": "CInsDirecciArm"
+                "name": "CINSDIRECCIARM"
             },
             {
                 "alias": "Fase CInsFase CInsFase",
-                "name": "CInsFase__CInsFase__CInsFase"
+                "name": "CINSFASE__CINSFASE__CINSFASE"
             },
             {
                 "alias": "Escala de Captura",
-                "name": "CInsECaptur"
+                "name": "CINSECAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "CInsRespons"
+                "name": "CINSRESPONS"
             },
             {
                 "alias": "Longitud",
-                "name": "CInsX_LONG"
+                "name": "CINSX_LONG"
             },
             {
                 "alias": "Latitud",
-                "name": "CInsY_LAT"
+                "name": "CINSY_LAT"
             },
             {
                 "alias": "Direccion",
-                "name": "CInsDireccion"
+                "name": "CINSDIRECCION"
             },
             {
                 "alias": "Tipo de red",
-                "name": "CInsTipoRed"
+                "name": "CINSTIPORED"
             },
             {
                 "alias": "Numero de ductos",
-                "name": "CInsNDuctos"
+                "name": "CINSNDUCTOS"
             },
             {
                 "alias": "Ubicación del ducto",
-                "name": "CInsUbicDucto"
+                "name": "CINSUBICDUCTO"
             },
             {
                 "alias": "Inspector",
-                "name": "CInsInspector"
+                "name": "CINSINSPECTOR"
             },
             {
                 "alias": "PuntoNumero",
-                "name": "PuntoNumero"
+                "name": "PUNTONUMERO"
             }
         ]
     }, {
         "name": "Válvula Gas Natural",
-        "id": "VGNa",
-        "layerId": "14",
+        "id": "METRO.VGNa",
+        "layerId": "10",
         "enable": true,
         "minScale": 0,
         "maxScale": 10000,
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Precisión",
-                "name": "Precisi"
+                "name": "PRECISI"
             },
             {
                 "alias": "Escala Captura",
-                "name": "ECaptur"
+                "name": "ECAPTUR"
             },
             {
                 "alias": "Fecha Captura",
-                "name": "FCaptur"
+                "name": "FCAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "Respons"
+                "name": "RESPONS"
             },
             {
                 "alias": "Tipo Válvula",
-                "name": "VGNTipo"
+                "name": "VGNTIPO"
             },
             {
                 "alias": "Código Malla",
-                "name": "VGNCodigo"
+                "name": "VGNCODIGO"
             },
             {
                 "alias": "Identificador Válvula",
-                "name": "VGNIValvul"
+                "name": "VGNIVALVUL"
             },
             {
                 "alias": "Diámetro",
-                "name": "VGNDiametr"
+                "name": "VGNDIAMETR"
             },
             {
                 "alias": "Situación  Terreno",
-                "name": "VGNSTerren"
+                "name": "VGNSTERREN"
             },
             {
                 "alias": "Estado Mantenimiento",
-                "name": "VGNEManten"
+                "name": "VGNEMANTEN"
             },
             {
                 "alias": "Dirección",
-                "name": "EGNDirecci"
+                "name": "EGNDIRECCI"
             },
             {
                 "alias": "Fecha de Construcción",
-                "name": "RGNFConstr"
+                "name": "RGNFCONSTR"
             },
             {
                 "alias": "Fase",
-                "name": "RGNFase"
+                "name": "RGNFASE"
             },
             {
                 "alias": "Inspector",
-                "name": "Inspector"
+                "name": "INSPECTOR"
             },
             {
                 "alias": "PuntoNumero",
-                "name": "PuntoNumero"
+                "name": "PUNTONUMERO"
             }
         ]
     }, {
         "name": "Red Gas Natural",
-        "id": "RGNa",
-        "layerId": "15",
+        "id": "METRO.RGNa",
+        "layerId": "20",
         "enable": true,
         "minScale": 0,
         "maxScale": 2000,
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Precisión",
-                "name": "Precisi"
+                "name": "PRECISI"
             },
             {
                 "alias": "Escala Captura",
-                "name": "ECaptur"
+                "name": "ECAPTUR"
             },
             {
                 "alias": "Fecha Captura",
-                "name": "FCaptur"
+                "name": "FCAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "Respons"
+                "name": "RESPONS"
             },
             {
                 "alias": "Tipo",
-                "name": "RGNTipo"
+                "name": "RGNTIPO"
             },
             {
                 "alias": "Identificador único",
-                "name": "RGNCodigo"
+                "name": "RGNCODIGO"
             },
             {
                 "alias": "Diámetro",
-                "name": "RGNDiametr"
+                "name": "RGNDIAMETR"
             },
             {
                 "alias": "RGNProfund",
-                "name": "RGNProfund"
+                "name": "RGNPROFUND"
             },
             {
                 "alias": "Instalación",
-                "name": "RGNInstala"
+                "name": "RGNINSTALA"
             },
             {
                 "alias": "Fecha de Construcción",
-                "name": "RGNFConstr"
+                "name": "RGNFCONSTR"
             },
             {
                 "alias": "Longitud",
-                "name": "RGNLongitu"
+                "name": "RGNLONGITU"
             },
             {
                 "alias": "Material",
-                "name": "RGNMateria"
+                "name": "RGNMATERIA"
             },
             {
                 "alias": "Clasficación",
-                "name": "RGNClasifi"
+                "name": "RGNCLASIFI"
             },
             {
                 "alias": "Fase",
-                "name": "RGNFase"
+                "name": "RGNFASE"
             },
             {
                 "alias": "Inspector",
-                "name": "Inspector"
+                "name": "INSPECTOR"
             },
             {
                 "alias": "PuntoNumero",
-                "name": "PuntoNumero"
+                "name": "PUNTONUMERO"
             },
             {
                 "alias": "Shape__Length",
@@ -1041,374 +993,356 @@
         ]
     }, {
         "name": "Estación Gas Natural, Estaciones de Bombeo, Reductoras de presión, City Gates.",
-        "id": "EGNa",
-        "layerId": "16",
+        "id": "METRO.EGNa",
+        "layerId": "6",
         "enable": true,
         "minScale": 0,
         "maxScale": 20000,
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Precisión",
-                "name": "Precisi"
+                "name": "PRECISI"
             },
             {
                 "alias": "Escala Captura",
-                "name": "ECaptur"
+                "name": "ECAPTUR"
             },
             {
                 "alias": "Fecha Captura",
-                "name": "FCaptur"
+                "name": "FCAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "Respons"
+                "name": "RESPONS"
             },
             {
                 "alias": "Clase",
-                "name": "EGNClase"
+                "name": "EGNCLASE"
             },
             {
                 "alias": "Código Malla",
-                "name": "EGNCodigo"
+                "name": "EGNCODIGO"
             },
             {
                 "alias": "Nombre",
-                "name": "EGNNombre"
+                "name": "EGNNOMBRE"
             },
             {
                 "alias": "Dirección",
-                "name": "EGNDirecci"
+                "name": "EGNDIRECCI"
             },
             {
                 "alias": "Fecha Construcción",
-                "name": "EGNFConstr"
+                "name": "EGNFCONSTR"
             },
             {
                 "alias": "Fase",
-                "name": "EGNFase"
+                "name": "EGNFASE"
             },
             {
                 "alias": "Inspector",
-                "name": "Inspector"
+                "name": "INSPECTOR"
             },
             {
                 "alias": "PuntoNumero",
-                "name": "PuntoNumero"
+                "name": "PUNTONUMERO"
             }
         ]
     }, {
         "name": "Teléfono Público",
-        "id": "TPub",
-        "layerId": "17",
+        "id": "METRO.TPub",
+        "layerId": "13",
         "enable": true,
         "minScale": 0,
         "maxScale": 15000,
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Fase",
-                "name": "Fase"
+                "name": "FASE"
             },
             {
                 "alias": "Precisión",
-                "name": "Precisi"
+                "name": "PRECISI"
             },
             {
                 "alias": "Escala Captura",
-                "name": "ECaptur"
+                "name": "ECAPTUR"
             },
             {
                 "alias": "Fecha Captura",
-                "name": "FCaptur"
+                "name": "FCAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "Respons"
+                "name": "RESPONS"
             },
             {
                 "alias": "Identificador Único",
-                "name": "TPuCodigo"
+                "name": "TPUCODIGO"
             },
             {
                 "alias": "Fecha Instalación",
-                "name": "TPuFInstal"
+                "name": "TPUFINSTAL"
             },
             {
                 "alias": "Dirección",
-                "name": "TPuDirecci"
+                "name": "TPUDIRECCI"
             },
             {
                 "alias": "Inspector",
-                "name": "TPubInspector"
+                "name": "TPUBINSPECTOR"
             },
             {
                 "alias": "PuntoNumero",
-                "name": "PuntoNumero"
+                "name": "PUNTONUMERO"
             }
         ]
     }, {
         "name": "Armarios",
-        "id": "Arma",
-        "layerId": "18",
+        "id": "METRO.Arma",
+        "layerId": "14",
         "enable": true,
         "minScale": 0,
         "maxScale": 8000,
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Fase",
-                "name": "Fase"
+                "name": "FASE"
             },
             {
                 "alias": "Precisión",
-                "name": "Precisi"
+                "name": "PRECISI"
             },
             {
                 "alias": "Escala Captura",
-                "name": "ECaptur"
+                "name": "ECAPTUR"
             },
             {
                 "alias": "Fecha Captura",
-                "name": "FCaptur"
+                "name": "FCAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "Respons"
+                "name": "RESPONS"
             },
             {
                 "alias": "Tipo",
-                "name": "ArmTipo"
+                "name": "ARMTIPO"
             },
             {
                 "alias": "Identificador Único",
-                "name": "ArmCodigo"
+                "name": "ARMCODIGO"
             },
             {
                 "alias": "Código Central",
-                "name": "ArmCCentra"
+                "name": "ARMCCENTRA"
             },
             {
                 "alias": "Número Armario",
-                "name": "ArmNArmari"
+                "name": "ARMNARMARI"
             },
             {
                 "alias": "Dirección",
-                "name": "ArmDirecci"
+                "name": "ARMDIRECCI"
             },
             {
                 "alias": "Inspector",
-                "name": "Inspector"
+                "name": "INSPECTOR"
             },
             {
                 "alias": "PuntoNumero",
-                "name": "PuntoNumero"
+                "name": "PUNTONUMERO"
             }
         ]
     }, {
         "name": "Apoyos de la Red de Transmisión",
-        "id": "ARTr",
-        "layerId": "19",
+        "id": "METRO.ARTr",
+        "layerId": "11",
         "enable": true,
         "minScale": 0,
         "maxScale": 800,
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Fase",
-                "name": "Fase"
+                "name": "FASE"
             },
             {
                 "alias": "Precisión",
-                "name": "Precisi"
+                "name": "PRECISI"
             },
             {
                 "alias": "Escala Captura",
-                "name": "ECaptur"
+                "name": "ECAPTUR"
             },
             {
                 "alias": "Fecha Captura",
-                "name": "FCaptur"
+                "name": "FCAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "Respons"
+                "name": "RESPONS"
             },
             {
                 "alias": "Tipo Apoyo",
-                "name": "ARTTApoyo"
+                "name": "ARTTAPOYO"
             },
             {
                 "alias": "Identificador Único",
-                "name": "ARTCodigo"
+                "name": "ARTCODIGO"
             },
             {
                 "alias": "Estructura",
-                "name": "ARTEstruct"
+                "name": "ARTESTRUCT"
             },
             {
                 "alias": "Fecha Construcción",
-                "name": "ARTFConstr"
+                "name": "ARTFCONSTR"
             },
             {
                 "alias": "Inspector",
-                "name": "ARTInspector"
+                "name": "ARTINSPECTOR"
             },
             {
                 "alias": "PuntoNumero",
-                "name": "PuntoNumero"
+                "name": "PUNTONUMERO"
             }
         ]
     }, {
         "name": "Cajas Inspección Telefónica",
-        "id": "Cajas_Inspeccion_1",
-        "layerId": "20",
+        "id": "METRO.Cajas_Inspeccion_TEL",
+        "layerId": "8",
         "enable": true,
         "minScale": 0,
         "maxScale": 3000,
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Identificador Único",
-                "name": "CInsCodigo"
+                "name": "CINSCODIGO"
             },
             {
                 "alias": "CódigoCentral",
-                "name": "CInsDirecciArm"
+                "name": "CINSDIRECCIARM"
             },
             {
                 "alias": "Fase CInsFase CInsFase",
-                "name": "CInsFase__CInsFase__CInsFase"
+                "name": "CINSFASE__CINSFASE__CINSFASE"
             },
             {
                 "alias": "Escala de Captura",
-                "name": "CInsECaptur"
+                "name": "CINSECAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "CInsRespons"
+                "name": "CINSRESPONS"
             },
             {
                 "alias": "Longitud",
-                "name": "CInsX_LONG"
+                "name": "CINSX_LONG"
             },
             {
                 "alias": "Latitud",
-                "name": "CInsY_LAT"
+                "name": "CINSY_LAT"
             },
             {
                 "alias": "Direccion",
-                "name": "CInsDireccion"
+                "name": "CINSDIRECCION"
             },
             {
                 "alias": "Tipo de red",
-                "name": "CInsTipoRed"
+                "name": "CINSTIPORED"
             },
             {
                 "alias": "Numero de ductos",
-                "name": "CInsNDuctos"
+                "name": "CINSNDUCTOS"
             },
             {
                 "alias": "Ubicación del ducto",
-                "name": "CInsUbicDucto"
+                "name": "CINSUBICDUCTO"
             },
             {
                 "alias": "Inspector",
-                "name": "CInspector"
+                "name": "CINSPECTOR"
             },
             {
                 "alias": "PuntoNumero",
-                "name": "PuntoNumero"
+                "name": "PUNTONUMERO"
             },
             {
                 "alias": "Material_Red",
-                "name": "Material_Red"
+                "name": "MATERIAL_RED"
             }
         ]
     }, {
         "name": "Red de Telecomunicaciones",
-        "id": "RTel_1",
-        "layerId": "21",
+        "id": "METRO.RTel_1",
+        "layerId": "19",
         "enable": true,
         "minScale": 0,
         "maxScale": 10000,
-        "fields": [{
-                "alias": "OBJECTID",
-                "name": "OBJECTID"
-            },
+        "fields": [
             {
                 "alias": "Fase",
-                "name": "Fase"
+                "name": "FASE"
             },
             {
                 "alias": "Precisión",
-                "name": "Precisi"
+                "name": "PRECISI"
             },
             {
                 "alias": "Escala Captura",
-                "name": "ECaptur"
+                "name": "ECAPTUR"
             },
             {
                 "alias": "Fecha Captura",
-                "name": "FCaptur"
+                "name": "FCAPTUR"
             },
             {
                 "alias": "Responsable",
-                "name": "Respons"
+                "name": "RESPONS"
             },
             {
                 "alias": "Clase",
-                "name": "RTeClase"
+                "name": "RTECLASE"
             },
             {
                 "alias": "Identificador Único",
-                "name": "RTeCodigo"
+                "name": "RTECODIGO"
             },
             {
                 "alias": "CódigoCentral",
-                "name": "RTeCCentra"
+                "name": "RTECCENTRA"
             },
             {
                 "alias": "Tipo de Red",
-                "name": "RTeTRed"
+                "name": "RTETRED"
             },
             {
                 "alias": "Material",
-                "name": "RTeMateria"
+                "name": "RTEMATERIA"
             },
             {
                 "alias": "Fecha Construcción",
-                "name": "RTeFConstr"
+                "name": "RTEFCONSTR"
             },
             {
                 "alias": "Diámetro Canalización",
-                "name": "RTeDCanali"
+                "name": "RTEDCANALI"
             },
             {
                 "alias": "Longitud",
-                "name": "RTeLongitu"
+                "name": "RTELONGITU"
             },
             {
                 "alias": "Inspector",
-                "name": "RTelInspector"
+                "name": "RTELINSPECTOR"
             },
             {
                 "alias": "PuntoNumero",
-                "name": "PuntoNumero"
+                "name": "PUNTONUMERO"
             },
             {
                 "alias": "RTeTuberia",
-                "name": "RTeTuberia"
+                "name": "RTETUBERIA"
             },
             {
                 "alias": "Shape__Length",

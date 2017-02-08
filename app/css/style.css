@@ -214,3 +214,7 @@ html, body, #map {
 #toc-ul > li {
   min-height: 60px;
 }
+
+.esriPopup .sizer{
+  width: 250px !important;
+}
