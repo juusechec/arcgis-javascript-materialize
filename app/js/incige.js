@@ -2,6 +2,7 @@ var map
 var toolbar
 var esriConfig
 var servicios
+var navToolbar
 
 require(['dojo/request/xhr'], function(xhr) {
     xhr('conf/servicios.json', {
@@ -30,6 +31,7 @@ function createMap() {
         'esri/SpatialReference',
         'esri/InfoTemplate',
         'esri/dijit/Scalebar',
+        'esri/toolbars/navigation',
         'dojo/domReady!'
     ], function(
         Map,
@@ -39,7 +41,8 @@ function createMap() {
         Extent,
         SpatialReference,
         InfoTemplate,
-        Scalebar
+        Scalebar,
+        Navigation
     ) {
 
         //xmin, xmax, ymin, ymax
@@ -58,6 +61,7 @@ function createMap() {
             basemap: 'topo'
         })
         window.map = map
+        navToolbar = new Navigation(map)
 
         // The URL referenced in the constructor may point to a style url JSON (as in this sample)
         // or directly to a vector tile service
@@ -70,7 +74,7 @@ function createMap() {
         map.on('load', createDrawToolbar)
 
         // https://developers.arcgis.com/javascript/3/jssamples/fl_ondemand.html
-        map.infoWindow.resize(155, 75)
+        map.infoWindow.resize(300, 100)
 
         // var fl = new FeatureLayer('https://services7.arcgis.com/lUZlLTBKH3INlBpk/arcgis/rest/services/Geodatabase_Redes_CAN/FeatureServer/0', {
         //     mode: FeatureLayer.MODE_ONDEMAND,
@@ -153,6 +157,7 @@ function createMap() {
         //add the legend
         createLeyend()
         createTOC()
+        createMeasurement()
     })
 }
 
@@ -170,11 +175,11 @@ function generateTemplateContent(layer) {
         //     //}
         // }
     } else {
-      for (var i = 0; i < layer.fields.length; i++) {
-        var field = layer.fields[i]
-        content += '<b>' + field.alias + ':</b> ${' + field.name + '} <br/>'
-      }
-      console.log(content)
+        for (var i = 0; i < layer.fields.length; i++) {
+            var field = layer.fields[i]
+            content += '<b>' + field.alias + ':</b> ${' + field.name + '} <br/>'
+        }
+        console.log(content)
     }
     return content
 }
@@ -216,6 +221,35 @@ function createLeyend() {
             }, 'legendDiv')
             legendDijit.startup()
         }
+    })
+}
+
+function createMeasurement() {
+    require([
+        'dojo/dom',
+        'esri/SnappingManager',
+        'esri/dijit/Measurement',
+        'esri/sniff',
+        'dojo/keys',
+        'dojo/parser'
+    ], function(
+        dom,
+        SnappingManager,
+        Measurement,
+        has,
+        keys
+        //parser
+    ) {
+        //parser.parse()
+        //dojo.keys.copyKey maps to CTRL on windows and Cmd on Mac., but has wrong code for Chrome on Mac
+        var snapManager = map.enableSnapping({
+            snapKey: has("mac") ? keys.META : keys.CTRL
+        });
+
+        var measurement = new Measurement({
+            map: map
+        }, dom.byId("measurementDiv"))
+        measurement.startup()
     })
 }
 
@@ -514,4 +548,46 @@ function printMap(evt) {
             })
         })
     })
+}
+
+function changeNavpane(button, opt) {
+    map.infoWindow.unsetMap()
+
+    var btnFloatings = $('.btn-floating')
+    btnFloatings.each(function(index) {
+        $(this).removeClass('red')
+        $(this).addClass('teal')
+    })
+
+    var button = $(button)
+    button.removeClass('teal')
+    button.addClass('red')
+
+    // console.log('button', button)
+    // if (button.hasClass('teal')) {
+    //     button.removeClass('teal')
+    //     button.addClass('red')
+    // } else {
+    //     button.removeClass('red')
+    //     button.addClass('teal')
+    // }
+
+    var navpane = $('#navpane')
+    if (navpane.css('display') === 'none') {
+        navpane.css('display', 'block')
+    } else {
+        navpane.css('display', 'none')
+        button.removeClass('red')
+        button.addClass('teal')
+        return
+    }
+
+    var divs = $('#navpane > div')
+    divs.each(function(index) {
+        $(this).css('display', 'none')
+    })
+    var ele = $('#' + opt)
+    if (opt === 'pane-medicion') {
+        ele.css('display', 'block')
+    }
 }

@@ -48,38 +48,44 @@ html, body, #map {
 
 #btnP1 {
     position: absolute;
-    top: 20px;
+    top: 10px;
     right: 20px;
 }
 
 #btnP2 {
     position: absolute;
-    top: 20px;
-    right: 80px;
+    top: 70px;
+    right: 20px;
 }
 
 #btnP3 {
     position: absolute;
-    top: 20px;
-    right: 140px;
+    top: 130px;
+    right: 20px;
 }
 
 #btnP4 {
     position: absolute;
-    top: 20px;
-    right: 200px;
+    top: 190px;
+    right: 20px;
 }
 
 #btnP5 {
     position: absolute;
-    top: 20px;
-    right: 260px;
+    top: 250px;
+    right: 20px;
 }
 
 #btnP6 {
     position: absolute;
-    top: 20px;
-    right: 320px;
+    top: 310px;
+    right: 20px;
+}
+
+#btnP7 {
+    position: absolute;
+    top: 370px;
+    right: 20px;
 }
 
 #btnZoomIn {
@@ -211,10 +217,53 @@ html, body, #map {
     left: 60px !important;
 }
 
-#toc-ul > li {
-  min-height: 60px;
+#toc-ul>li {
+    min-height: 60px;
 }
 
-.esriPopup .sizer{
-  width: 250px !important;
+.esriPopup .sizer {
+    /*width: 250px !important;*/
+}
+
+#navpane {
+    width: 300px;
+    height: -webkit-calc(100% - 36px);
+    height: -moz-calc(100% - 36px);
+    height: calc(100% - 36px);
+    position: absolute;
+    right: 100px;
+    top: 0;
+}
+
+.dijitArrowButtonChar {
+    display: inline !important;
+    font-size: 50%;
+}
+
+.esriMeasurementButtonContainer: hover {}
+
+.esriMeasurementButtonContainer>.esriToggleButton {
+    border: 1px solid #b1b1b1;
+    width: 100%;
+    text-align: center;
+}
+
+.esriMeasurementButtonContainer>.esriToggleButton>.dijitButtonNode {
+    width: auto !important;
+}
+
+.dijitPopup.dijitMenuPopup {
+    /*background-color: #f00;*/
+}
+
+.dijitPopup.dijitMenuPopup>table>tbody>tr {
+    height: 24px;
+}
+
+.dijitPopup.dijitMenuPopup>table>tbody>tr {
+    border: 0.5px solid #333333;
+}
+
+.dijitMenuItemLabel{
+  left: 5px;
 }

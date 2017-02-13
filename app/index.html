@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="css/img/favicon.png" rel="icon" type="image/png">
 
+    <link href="//js.arcgis.com/3.19/esri/themes/calcite/dijit/calcite.css" rel="stylesheet" />
     <link href="//js.arcgis.com/3.19/esri/css/esri.css" rel="stylesheet" />
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="vendor/material-design-icons/iconfont/material-icons.css" rel="stylesheet" />
@@ -230,20 +231,36 @@
     <!-- Menu -->
     <div id="menu">
         <!-- https://design.google.com/icons -->
-        <div id="btnP1" title="Medición" class="btnMenu btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="bottom" data-delay="50" data-tooltip="Medición">
-            <i class="large material-icons">gesture</i>
+        <div id="btnP1" title="Medición" class="btn-floating btn-large teal dropdown-button btn" onclick="changeNavpane(this, 'pane-medicion');">
+            <i class="material-icons">gesture</i>
         </div>
-        <div id="btnP2" title="Medición" class="btn-floating btn-large red dropdown-button btn" data-activates="dropdown1">
-            <i class="material-icons">menu</i>
+        <div id="btnP2" title="Identificar" class="btn-floating btn-large teal dropdown-button btn" onclick="map.infoWindow.setMap(map);">
+            <i class="material-icons">search</i>
         </div>
-        <!-- Dropdown Structure -->
-        <ul id='dropdown1' class='dropdown-content'>
-            <li><a href="#!">one</a></li>
-            <li><a href="#!">two</a></li>
-            <li class="divider"></li>
-            <li><a href="#!">three</a></li>
-        </ul>
+        <div id="btnP3" title="Acercar" class="btn-floating btn-large teal dropdown-button btn" onclick="map.infoWindow.unsetMap();navToolbar.activate(esri.toolbars.Navigation.ZOOM_IN);">
+            <i class="material-icons">zoom_in</i>
+        </div>
+        <div id="btnP4" title="Alejar" class="btn-floating btn-large teal dropdown-button btn" onclick="map.infoWindow.unsetMap();navToolbar.activate(esri.toolbars.Navigation.ZOOM_OUT);">
+            <i class="material-icons">zoom_out</i>
+        </div>
+        <div id="btnP5" title="Panear" class="btn-floating btn-large teal dropdown-button btn" onclick="map.infoWindow.unsetMap();navToolbar.activate(esri.toolbars.Navigation.PAN);">
+            <i class="material-icons">pan_tool</i>
+        </div>
+        <div id="btnP6" title="Detener" class="btn-floating btn-large teal dropdown-button btn" onclick="map.infoWindow.unsetMap();navToolbar.deactivate();">
+            <i class="material-icons">clear</i>
+        </div>
+        <div id="btnP7" title="Limpiar" class="btn-floating btn-large teal dropdown-button btn" onclick="map.graphics.clear();">
+            <i class="material-icons">delete</i>
+        </div>
     </div>
+
+    <div id="navpane" class="card-panel teal lighten-5" style="display:none;">
+        <div id="pane-medicion">
+          <div id="measurementDiv"></div>
+          <span style="font-size:smaller;padding:5px 5px;">Press <b>CTRL</b> to enable snapping.</span>
+        </div>
+    </div>
+    <!-- end #navpane -->
 
     <!-- Modal -->
     <!-- Modal Trigger -->
