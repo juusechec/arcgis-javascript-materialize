@@ -74,7 +74,7 @@ function createMap() {
         map.on('load', createDrawToolbar)
 
         // https://developers.arcgis.com/javascript/3/jssamples/fl_ondemand.html
-        map.infoWindow.resize(300, 100)
+        map.infoWindow.resize(400, 200)
 
         // var fl = new FeatureLayer('https://services7.arcgis.com/lUZlLTBKH3INlBpk/arcgis/rest/services/Geodatabase_Redes_CAN/FeatureServer/0', {
         //     mode: FeatureLayer.MODE_ONDEMAND,

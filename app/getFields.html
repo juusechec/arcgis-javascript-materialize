@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Get Fields Object</title>
+</head>
+
+<body>
+    <script src="vendor/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="//js.arcgis.com/3.19/"></script>
+    <script>
+        var map
+
+        function createMap(url) {
+            require([
+                'esri/map',
+                'esri/layers/VectorTileLayer',
+                'esri/layers/FeatureLayer',
+                'esri/layers/ArcGISTiledMapServiceLayer',
+                'esri/geometry/Extent',
+                'esri/SpatialReference',
+                'esri/InfoTemplate',
+                'esri/dijit/Scalebar',
+                'esri/toolbars/navigation',
+                'dojo/domReady!'
+            ], function(
+                Map,
+                VectorTileLayer,
+                FeatureLayer,
+                ArcGISTiledMapServiceLayer,
+                Extent,
+                SpatialReference,
+                InfoTemplate,
+                Scalebar,
+                Navigation
+            ) {
+
+                //xmin, xmax, ymin, ymax
+                var startExtent = new Extent(-8247776.0260493355,
+                    513403.24603438814, -8244107.048691551,
+                    515206.682170539,
+                    new SpatialReference({
+                        wkid: 102100
+                    })
+                )
+
+                // var map = new Map('map', {
+                //     center: [-74, 4], // longitude, latitude
+                //     zoom: 2, // zoom factor
+                //     //extent: startExtent,
+                //     basemap: 'topo'
+                // })
+                // window.map = map
+
+                var fl = new FeatureLayer(url, {
+                    mode: FeatureLayer.MODE_ONDEMAND,
+                    // tileWidth: 200,
+                    // tileHeight: 200
+                })
+                //map.addLayer(fl)
+                window.fl = fl
+                fl.on('load', function() {
+                    for (var i = 0; i < fl.fields.length; i++) {
+                        var field = fl.fields[i]
+                        var alias = field.name
+                        var name = field.alias
+                        var json =
+'\n\
+{\n\
+  "alias": "' + alias + '",\n\
+  "name": "' + name + '"\n\
+}\n\
+'
+                        console.log(json)
+                        $('#results').append(json)
+                    }
+                })
+
+                // var vtlayer = new VectorTileLayer('https://www.arcgis.com/sharing/rest/content/items/bf79e422e9454565ae0cbe9553cf6471/resources/styles/root.json')
+                // map.addLayer(vtlayer)
+
+                // var fl = new FeatureLayer('https://services7.arcgis.com/lUZlLTBKH3INlBpk/arcgis/rest/services/Geodatabase_Redes_CAN/FeatureServer/0', {
+                //     mode: FeatureLayer.MODE_ONDEMAND,
+                //     // tileWidth: 200,
+                //     // tileHeight: 200
+                // })
+                // window.fl = fl
+                // map.addLayer(fl)
+                // for (var i = 0; i <= 21; i++) {
+                //   map.addLayer(new FeatureLayer('https://services7.arcgis.com/lUZlLTBKH3INlBpk/arcgis/rest/services/IRSP_V1/FeatureServer/'+i, {
+                //     mode: FeatureLayer.MODE_ONDEMAND,
+                //   }))
+                // }
+
+                // for (var i = 10; i <= 15; i++) {
+                //   map.addLayer(new FeatureLayer('https://services7.arcgis.com/lUZlLTBKH3INlBpk/ArcGIS/rest/services/IRSP_V1/FeatureServer/'+i, {
+                //     mode: FeatureLayer.MODE_ONDEMAND,
+                //   }))
+                // }
+
+                //map.addLayer(new ArcGISTiledMapServiceLayer('https://services7.arcgis.com/lUZlLTBKH3INlBpk/arcgis/rest/services/IRSP_V1/MapServer'))
+            })
+        }
+
+        function generarJSON() {
+            var url = $('#miForm').find('input[name="capa"]').val()
+            if (url !== '') {
+                console.log('url', url)
+                createMap(url)
+            }
+        }
+    </script>
+    <form id="miForm">
+        <fieldset>
+            <legend>Datos de la capa</legend>
+            <label for="capa">URL Servicio: </label>
+            <input name="capa"></input>
+        </fieldset>
+        <button type="button" onclick="generarJSON();">Generar JSON</button>
+    </form>
+
+    <div>
+        <textarea id="results" rows="20" cols="100"></textarea>
+    </div>
+
+    <div id="map"></div>
+
+</body>
+
+</html>

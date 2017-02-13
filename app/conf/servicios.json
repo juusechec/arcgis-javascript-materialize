@@ -7,8 +7,17 @@
     "opacity": 0.8,
     "type": "ArcGISTiledMapServiceLayer",
     "enable": false
-}, {
+},{
     "serviceId": 2,
+    "serviceType": "MapServer",
+    "name": "OrtoFoto Bogotá",
+    "id": "Ortho2014",
+    "url": "http://serviciosgis.eastus.cloudapp.azure.com/arcgis/rest/services/Imagenes/Ortho2014/MapServer",
+    "opacity": 0.8,
+    "type": "ArcGISTiledMapServiceLayer",
+    "enable": true
+}, {
+    "serviceId": 3,
     "serviceType": "FeatureServer",
     "name": "Infraestructura de Redes de Servicios Públicos IRSP",
     "id": "IRSP_V1 (FeatureServer)",
@@ -1347,6 +1356,19 @@
             {
                 "alias": "Shape__Length",
                 "name": "Shape__Length"
+            }
+        ]
+    }, {
+        "name": "Red de Telecomunicaciones",
+        "id": "METRO.RTel_1",
+        "layerId": "19",
+        "enable": true,
+        "minScale": 0,
+        "maxScale": 10000,
+        "fields": [
+            {
+                "alias": "Fase",
+                "name": "FASE"
             }
         ]
     }]
