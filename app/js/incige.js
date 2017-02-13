@@ -127,14 +127,14 @@ function createMap() {
                     var arcGISTiledMapServiceLayer = new ArcGISTiledMapServiceLayer(servicio.url)
                     map.addLayer(arcGISTiledMapServiceLayer)
                 } else if (servicio.serviceType === 'FeatureServer') {
-                    for (var i = 0; i < servicio.layers.length; i++) {
-                        var layer = servicio.layers[i]
+                    for (var j = 0; j < servicio.layers.length; j++) {
+                        var layer = servicio.layers[j]
                         if (layer.enable) {
                             var url = servicio.url + '/' + layer.layerId
 
                             var infoTemplate = new InfoTemplate()
                             infoTemplate.setTitle(layer.name)
-                            var content = generateTemplateContent(layer)
+                            var content = generateTemplateContent(layer, i, j)
                             infoTemplate.setContent(content)
 
                             var featureLayer = new FeatureLayer(url, {
@@ -161,9 +161,28 @@ function createMap() {
     })
 }
 
-function generateTemplateContent(layer) {
+//https://geonet.esri.com/docs/DOC-8721-coded-domains-in-infotemplate
+//https://developers.arcgis.com/javascript/3/jshelp/intro_formatinfowindow.html
+function getSubtypeDomain(fieldVal, fieldName, feature, injectObject) {
+    if(fieldVal === null){
+      return fieldVal
+    }
+
+    var codedValues = servicios[injectObject.SERVICE_NUM].layers[injectObject.LAYER_NUM].fields[injectObject.FIELD_NUM].domain.codedValues
+    //console.log('codedValues', codedValues)
+    for (var i in codedValues) {
+        console.log('codedValues[i], fieldVal', codedValues[i], fieldVal)
+        if (codedValues[i].code === fieldVal) {
+            return codedValues[i].name
+        }
+    }
+    //console.log('fieldVal, fieldName', fieldVal, fieldName, feature, injectObject)
+    return 'Error.'
+}
+
+function generateTemplateContent(layer, SERVICE_NUM, LAYER_NUM) {
     var content = ''
-    console.log(layer)
+    //console.log('layer', layer)
     //console.log(typeof(layer.fields), layer.fields.length)
     if (typeof(layer.fields) === 'undefined' || layer.fields.length === 0) {
         // var capa = map.getLayer(layer.id)
@@ -177,9 +196,16 @@ function generateTemplateContent(layer) {
     } else {
         for (var i = 0; i < layer.fields.length; i++) {
             var field = layer.fields[i]
-            content += '<b>' + field.alias + ':</b> ${' + field.name + '} <br/>'
+            if (field.domain === undefined) {
+                content += '<b>' + field.alias + ':</b> ${' + field.name + '} <br/>'
+            } else {
+                var codedValues = field.domain.codedValues
+                //var codedValue = codedValues[ Number(field.name) - 1 ]
+                //console.log(codedValues, field.name, Number(field.name), Number(field.name) - 1, '<b>' + field.alias + ':</b> ${' + codedValue + ':getSubtypeDomain} <br/>')
+                content += '<b>' + field.alias + ':</b> ${' + field.name + ':getSubtypeDomain(SERVICE_NUM: "' + SERVICE_NUM + '", LAYER_NUM: "' + LAYER_NUM + '" , FIELD_NUM: "' + i + '")} <br/>'
+            }
         }
-        console.log(content)
+        //console.log('content', content)
     }
     return content
 }
