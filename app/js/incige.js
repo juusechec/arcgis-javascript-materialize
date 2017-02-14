@@ -3,6 +3,7 @@ var toolbar
 var esriConfig
 var servicios
 var navToolbar
+var geometriaAnalisis
 
 require(['dojo/request/xhr'], function(xhr) {
     xhr('conf/servicios.json', {
@@ -46,9 +47,9 @@ function createMap() {
     ) {
 
         //xmin, xmax, ymin, ymax
-        var startExtent = new Extent(-8247776.0260493355,
-            513403.24603438814, -8244107.048691551,
-            515206.682170539,
+        var startExtent = new Extent(-8265757.83695336,
+            508204.3337824254, -8236406.018091892,
+            522631.822871233,
             new SpatialReference({
                 wkid: 102100
             })
@@ -117,7 +118,9 @@ function createMap() {
         window.mapFeatureLayerObjects = new Array()
         map.on('zoom-end', function() {
             checkVisibilityAtScale()
+            showScale()
         })
+        showScale()
 
         var servicios = window.servicios
         for (var i = 0; i < servicios.length; i++) {
@@ -161,17 +164,21 @@ function createMap() {
     })
 }
 
+function showScale() {
+    $('#extentpane>span').html('1:' + String(window.map.getScale()))
+}
+
 //https://geonet.esri.com/docs/DOC-8721-coded-domains-in-infotemplate
 //https://developers.arcgis.com/javascript/3/jshelp/intro_formatinfowindow.html
 function getSubtypeDomain(fieldVal, fieldName, feature, injectObject) {
-    if(fieldVal === null){
-      return fieldVal
+    if (fieldVal === null) {
+        return fieldVal
     }
 
     var codedValues = servicios[injectObject.SERVICE_NUM].layers[injectObject.LAYER_NUM].fields[injectObject.FIELD_NUM].domain.codedValues
     //console.log('codedValues', codedValues)
     for (var i in codedValues) {
-        console.log('codedValues[i], fieldVal', codedValues[i], fieldVal)
+        //console.log('codedValues[i], fieldVal', codedValues[i], fieldVal)
         if (codedValues[i].code === fieldVal) {
             return codedValues[i].name
         }
@@ -343,15 +350,15 @@ function createDrawToolbar(themap) {
 
         var boton = dom.byId('btnDrawPoint')
         var signal = on(boton, 'click', function() {
-            onClickButtonToolbar(Draw, 'POINT')
+            onClickButtonToolbar(signal, Draw, 'POINT')
         })
         var boton = dom.byId('btnDrawLine')
         var signal = on(boton, 'click', function() {
-            onClickButtonToolbar(Draw, 'LINE')
+            onClickButtonToolbar(signal, Draw, 'POLYLINE')
         })
         var boton = dom.byId('btnDrawPoly')
         var signal = on(boton, 'click', function() {
-            onClickButtonToolbar(Draw, 'POLYGON')
+            onClickButtonToolbar(signal, Draw, 'POLYGON')
         })
     })
 }
@@ -411,11 +418,15 @@ function checkVisibilityAtScale() {
     }
 }
 
-function onClickButtonToolbar(Draw, type) {
+function onClickButtonToolbar(signal, Draw, type) {
+    map.infoWindow.unsetMap()
+    navToolbar.deactivate()
+    map.graphics.clear()
+
     toolbar.activate(Draw[type])
     map.hideZoomSlider()
     // remove listener after first event
-    //signal.remove()
+    signal.remove()
     // do something else...
 }
 
@@ -516,6 +527,8 @@ function showBuffer(bufferedGeometries) {
             ),
             new Color([255, 0, 0, 0.35])
         )
+        //OJO: solo se selecciona el primero porque es punto, linea o polígono unido
+        window.currentGeometry = bufferedGeometries[0]
         array.forEach(bufferedGeometries, function(geometry) {
             var graphic = new Graphic(geometry, symbol)
             map.graphics.add(graphic)
@@ -536,44 +549,6 @@ function applyBuffer(evt) {
 function displayMessage(msj) {
     $('#message-modal1').html(msj)
     $('#modal1').modal('open')
-}
-
-function printMap(evt) {
-    document.getElementById('loading-report').style.display = 'block'
-    require([
-        'esri/tasks/PrintTask',
-        'esri/tasks/PrintParameters',
-        'esri/tasks/PrintTemplate'
-    ], function(
-        PrintTask,
-        PrintParameters,
-        PrintTemplate
-    ) {
-        var url = 'http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task'
-        var printTask = new PrintTask(url)
-
-        var template = new PrintTemplate()
-        template.exportOptions = {
-            width: 500,
-            height: 400,
-            dpi: 96
-        }
-        template.format = 'PNG32'
-        template.layout = 'MAP_ONLY'
-        template.preserveScale = false
-
-        var params = new PrintParameters()
-        params.map = map
-        params.template = template
-
-        printTask.execute(params, function(response) {
-            console.log(response.url)
-            var imageUrl = response.url
-            window.generateReports(1, {
-                imageUrl: imageUrl
-            })
-        })
-    })
 }
 
 function changeNavpane(button, opt) {

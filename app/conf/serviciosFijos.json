@@ -112,7 +112,7 @@
         "name": "Malla Vial",
         "groupId": "catastro",
         "maxScale": 1000,
-        "enable": true
+        "enable": false
     },
     "METRO.RTel_1": {
         "name": "Red de Telecomunicaciones",
@@ -156,20 +156,20 @@
     "METRO.Tramos_": {
         "name": "Tramos",
         "groupId": "metro",
-        "maxScale": 1000,
+        "maxScale": 120000,
         "enable": true
     },
     "METRO.Andenes": {
         "name": "Andenes",
         "groupId": "catastro",
         "maxScale": 1000,
-        "enable": true
+        "enable": false
     },
     "METRO.Calzadas": {
         "name": "Calzadas",
         "groupId": "catastro",
         "maxScale": 1000,
-        "enable": true
+        "enable": false
     },
     "METRO.Estaciones_Ajustadas": {
         "name": "Estaciones",
@@ -181,12 +181,12 @@
         "name": "Manzanas",
         "groupId": "catastro",
         "maxScale": 1000,
-        "enable": true
+        "enable": false
     },
     "METRO.Separadores": {
         "name": "Separadores",
         "groupId": "catastro",
         "maxScale": 1000,
-        "enable": true
+        "enable": false
     }
 }

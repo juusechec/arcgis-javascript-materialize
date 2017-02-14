@@ -4,7 +4,8 @@
 <head>
     <link rel="stylesheet" href="{{baseUrl}}/css/reportes.css">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Reporte 1</title>
+    <title>Reporte 1 Primera Línea del Metro de Bogotá</title>
+    <link href="css/img/favicon.png" rel="icon" type="image/png">
 </head>
 
 <body>
@@ -14,35 +15,33 @@
             <img src="{{baseUrl}}/css/img/logo_EAAB.jpg" />
         </div>
         <div id="titulo">
-            <h1>Reporte 1</h1>
+            <h1>Reporte 1 Primera Línea del Metro de Bogotá</h1>
         </div>
         <div class="logo right">
             <img src="{{baseUrl}}/css/img/logo_EAAB.jpg" />
         </div>
 
-
+        {{#imageexist}}
         <div id="mapa">
             <img src="{{imageUrl}}" />
         </div>
+        {{/imageexist}}
 
         <div class="titulo2">
             <h2>RESUMEN DE REDES AFECTADAS</h2>
         </div>
 
         <div id="resultado">
-            <ul>
-                <li>
-                    <h3>Resultado</h3>
-                </li>
-                <li>resullllll</li>
-            </ul>
-
-            <ul>
-                <li>
-                    <h3>Resultado</h3>
-                </li>
-                <li>resullllll</li>
-            </ul>
+          {{#resultado}}
+          <ul>
+              <li>
+                  <h3>Resultado {{capa}}</h3>
+              </li>
+              {{#entidades}}
+              <li>Nombre: {{nombre}}</li>
+              {{/entidades}}
+          </ul>
+          {{/resultado}}
         </div>
 
     </div>

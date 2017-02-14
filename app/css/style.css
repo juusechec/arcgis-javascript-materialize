@@ -17,7 +17,7 @@ html, body, #map {
 }
 
 #sidebar {
-    z-index: 10;
+    z-index: 40;
 }
 
 .sidebar-content, .sidebar-pane {
@@ -215,6 +215,7 @@ html, body, #map {
 
 .esriScalebar {
     left: 60px !important;
+    bottom: 67px !important;
 }
 
 #toc-ul>li {
@@ -233,6 +234,19 @@ html, body, #map {
     position: absolute;
     right: 100px;
     top: 0;
+}
+
+#extentpane {
+    width: auto;
+    position: absolute;
+    left: 60px;
+    bottom: 18px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
+    height: 25px;
+    text-align: center;
+    font-weight: bold;
+    padding: 4px;
 }
 
 .dijitArrowButtonChar {
@@ -264,6 +278,6 @@ html, body, #map {
     border: 0.5px solid #333333;
 }
 
-.dijitMenuItemLabel{
-  left: 5px;
+.dijitMenuItemLabel {
+    left: 5px;
 }

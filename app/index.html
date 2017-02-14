@@ -80,7 +80,7 @@
                             </div>
                             <!-- end .card-content -->
                             <div class="card-content">
-                                Dibuje sobre el mapa la geometría de influencia:
+                                <b>Dibuje sobre el mapa la geometría de influencia:</b>
                                 <div class="row">
                                     <ul class="col s12">
                                         <li class="col s4">
@@ -101,18 +101,19 @@
                                     </ul>
                                     <!-- end .col .s12 -->
                                     <!-- <i class="material-icons prefix">settings_overscan</i> -->
+                                    <b>Opcionalmente escoja una distacia y unidad de Buffer:</b>
                                     <form action="#" class="input-field col s12">
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <i class="material-icons prefix">select_all</i>
-                                                <input id="buffer_distance" type="text" class="validate">
+                                                <input id="buffer_distance" type="text" class="validate" value="0">
                                                 <label for="buffer_distance">Buffer (distancia)</label>
                                             </div>
                                             <div class="input-field col s6">
                                                 <select id="buffer_unit">
-                                                      <option value="" disabled selected>Seleccione la opción</option>
+                                                      <option value="" disabled>Seleccione la opción</option>
+                                                      <option value="UNIT_METER" selected>Metros</option>
                                                       <option value="UNIT_KILOMETER">Kilometros</option>
-                                                      <option value="UNIT_METER">Metros</option>
                                                       <option value="UNIT_STATUTE_MILE">Millas</option>
                                                       <!-- <option value="UNIT_FOOT">Pies</option>
                                                       <option value="UNIT_NAUTICAL_MILE">Millas Nauticas</option>
@@ -122,16 +123,22 @@
                                                 <label>Unidades</label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <button class="btn waves-effect waves-light grey" type="submit" name="action" onclick="applyBuffer(event)">Aplicar Buffer
+                                                <button type="button" class="btn waves-effect waves-light grey" type="submit" onclick="applyBuffer(event)">Aplicar Buffer
                                                       <i class="material-icons right">send</i>
                                                     </button>
                                             </div>
                                             <div class="input-field col s12">
-                                                <button class="btn waves-effect waves-light grey" type="submit" name="action" onclick="printMap(event)">Generar Reporte
+                                                <button type="button" class="btn waves-effect waves-light grey" type="submit" onclick="generateReport1();">Generar Reporte
                                                       <i class="material-icons right">print</i>
                                                     </button>
                                             </div>
+                                            <div class="input-field col s12">
+                                                <button type="button" class="btn waves-effect waves-light grey" type="submit" onclick="generateReports(1, {});">Reporte Rápido
+                                                      <i class="material-icons right">flash_on</i>
+                                                    </button>
+                                            </div>
                                             <div id="loading-report" class="input-field col s12" style="display: none;">
+                                                <div id="loading-report-message"><b></b></div>
                                                 <div class="preloader-wrapper big active">
                                                     <div class="spinner-layer spinner-blue">
                                                         <div class="circle-clipper left">
@@ -256,11 +263,16 @@
 
     <div id="navpane" class="card-panel teal lighten-5" style="display:none;">
         <div id="pane-medicion">
-          <div id="measurementDiv"></div>
-          <span style="font-size:smaller;padding:5px 5px;">Press <b>CTRL</b> to enable snapping.</span>
+            <div id="measurementDiv"></div>
+            <span style="font-size:smaller;padding:5px 5px;">Press <b>CTRL</b> to enable snapping.</span>
         </div>
     </div>
     <!-- end #navpane -->
+
+    <div id="extentpane">
+        Escala: <span>1:noInf</span>
+    </div>
+    <!-- end #extentpane -->
 
     <!-- Modal -->
     <!-- Modal Trigger -->
