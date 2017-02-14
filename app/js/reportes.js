@@ -52,7 +52,7 @@ function generateQuickReport1(html, results, opt) {
     //w.onfocus=function(){ w.alert('El reporte ha sido generado exitósamente.') }
     setTimeout(function() {
         w.stop()
-    }, 3000)
+    }, 5000)
     //w.document.body.innerHTML = output
 }
 
@@ -103,21 +103,104 @@ function printMap(listener) {
     })
 }
 
+function getLayerByURL(url) {
+    for (var i = 0; i < servicios.length; i++) {
+        var servicio = servicios[i]
+        if (servicio.layers !== undefined) {
+            for (var j = 0; j < servicio.layers.length; j++) {
+                var layer = servicio.layers[j]
+                var newUrl = servicio.url + '/' + layer.layerId
+                if (url === newUrl) {
+                    return window.map.getLayer(layer.id)
+                }
+            }
+        }
+    }
+}
+
+var resultadosRedesAfectadas = new Array()
+
 function getRedesAfectadas(listener) {
-    var resultados = [{
-        'capa': 'nombre de capa 1',
-        'entidades': [{
-            'nombre': 'hi'
-        }, {
-            'nombre': 'hi2  '
-        }]
-    }, {
-        'capa': 'nombre de capa 2',
-        'entidades': [{
-            'nombre': 'hello'
-        }, {
-            'nombre': 'hello2  '
-        }]
-    }]
-    listener(resultados)
+    require([
+        'esri/tasks/QueryTask',
+        'esri/tasks/query',
+        'dojo/promise/all',
+        'dojo/Deferred'
+    ], function(
+        QueryTask,
+        Query,
+        all,
+        Deferred
+    ) {
+        window.resultadosRedesAfectadas = new Array()
+        var deferreds = new Array()
+        for (var i = 0; i < servicios.length; i++) {
+            var servicio = servicios[i]
+            if (servicio.layers !== undefined) {
+                for (var j = 0; j < servicio.layers.length; j++) {
+                    var layer = servicio.layers[j]
+                    var featureLayer = window.map.getLayer(layer.id)
+                    if (featureLayer !== undefined) {
+                        console.log('featureLayer.url', featureLayer.url)
+                        var queryTask = new QueryTask(featureLayer.url)
+                        var query = new Query()
+                        query.returnGeometry = false
+                        query.geometry = window.currentGeometry
+                        query.outFields = ['*']
+                        var deferred = new Deferred()
+                        deferreds[layer.id] = deferred
+                        queryTask.on('complete', function(results) {
+                            //console.log('results: ', results);
+                            var url = results.target.url
+                            var newLayer = getLayerByURL(url)
+                            //console.log('newLayer', newLayer)
+                            var features = results.featureSet.features
+                            if (features.length > 0) {
+                                var entidades = new Array()
+                                for (var k = 0; k < features.length; k++) {
+                                    var attributes = features[k].attributes
+                                    var campos = ''
+                                    for (var m in attributes) {
+                                        //console.log(m, attributes, attributes[m])
+                                        campos += m + ': ' + attributes[m] + '\n'
+                                    }
+                                    //campos = campos.slide(0,campos.lastIndexOf(';') - 1)
+                                    var entidad = {
+                                        'OBJECTID': attributes.OBJECTID,
+                                        'campos': campos
+                                    }
+                                    entidades.push(entidad)
+                                }
+                                var resultado = {
+                                    'capa': newLayer.id,
+                                    'entidades': entidades
+                                }
+                                console.log(resultado)
+                                resultadosRedesAfectadas.push(resultado)
+                            }
+                            deferreds[newLayer.id].resolve(results)
+                            //console.log(deferreds[layer.id].isResolved())
+                            //console.log('results', layer.id, results)
+                        })
+                        queryTask.on('error', function(a, b, c) {
+                            //console.log(deferreds[layer.id].isResolved())
+                            console.log('Error: ', a, b, c)
+                        })
+                        queryTask.execute(query)
+                    }
+                    //console.log('layer', layer)
+                    //console.log('featureLayer', featureLayer)
+                }
+            }
+        }
+        window.deferreds = deferreds
+        var promises = new Array()
+        for (var i in deferreds.length) {
+            promises.push(deferreds[i].promise)
+        }
+        all(promises).then(function(results) {
+            console.log('results', results)
+            listener(resultadosRedesAfectadas)
+        })
+    })
 }

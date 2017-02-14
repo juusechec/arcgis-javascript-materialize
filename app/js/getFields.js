@@ -157,6 +157,10 @@ function llenarFilas(fl, actual, min, max) {
         icon = '"icon": "' + configCapas[id].icon + '",'
     }
     var enable = configCapas[id].enable
+    var visible = ''
+    if (configCapas[id].visible !== undefined) {
+        visible = '"visible": "' + configCapas[id].visible + '",'
+    }
     var jsonLayer =
         `{
         "name": "` + name + `",
@@ -166,6 +170,7 @@ function llenarFilas(fl, actual, min, max) {
         "minScale": 0,
         "maxScale": ` + maxScale + `,
         ` + icon + `
+        ` + visible + `
         "fields": [` +
         jsonFields + `]
       },`

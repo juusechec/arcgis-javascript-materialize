@@ -145,6 +145,7 @@ function createMap() {
                                 mode: FeatureLayer[servicio.mode],
                                 outFields: ['*'],
                                 infoTemplate: infoTemplate,
+                                visible: layer.visible
                                 // maxAllowableOffset: calcOffset()
                             })
                             window.mapFeatureLayerObjects.push(layer)
@@ -295,6 +296,10 @@ function createTOC() {
         var ul = dom.byId('toc-ul')
         for (var i = 0; i < window.mapFeatureLayerObjects.length; i++) {
             var layer = window.mapFeatureLayerObjects[i]
+            var classVisible = 'visibility'
+            if (layer.visible === 'false') {
+                classVisible = 'visibility_off'
+            }
             var imageUrl = (typeof(layer.icon) === 'undefined' || layer.icon === '') ? 'css/img/acueducto.png' : layer.icon
             var li = '\
             <li class="collection-item avatar">\
@@ -302,7 +307,7 @@ function createTOC() {
                 <span class="title" style="padding-right: 22px; display: block;">' + layer.name + '</span>\
                 <p>Desde escala 1:' + layer.maxScale + '</p>\
                 <a href="#!" onclick="changeVisibilityLayer(this,\'' + layer.id + '\')" class="secondary-content">\
-                    <i class="material-icons btnEye">visibility</i>\
+                    <i class="material-icons btnEye">' + classVisible + '</i>\
                 </a>\
             </li>'
             ul.innerHTML = ul.innerHTML + li
@@ -426,7 +431,7 @@ function onClickButtonToolbar(signal, Draw, type) {
     toolbar.activate(Draw[type])
     map.hideZoomSlider()
     // remove listener after first event
-    signal.remove()
+    //signal.remove()
     // do something else...
 }
 
@@ -554,7 +559,7 @@ function displayMessage(msj) {
 function changeNavpane(button, opt) {
     map.infoWindow.unsetMap()
 
-    var btnFloatings = $('.btn-floating')
+    var btnFloatings = $('.btn-nav-pane')
     btnFloatings.each(function(index) {
         $(this).removeClass('red')
         $(this).addClass('teal')

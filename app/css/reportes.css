@@ -48,6 +48,7 @@ body {
     width: 25%;
     position: relative;
     border: 1px solid;
+    padding: 0 10px 0 10px;
 }
 
 #mapa {
@@ -67,4 +68,12 @@ body {
     margin: 0 auto;
     width: 80%;
     height: auto;
+}
+
+#resultado li {
+    margin-bottom: 10px;
+}
+
+#resultado li:nth-child(2n) {
+    background-color: #ececec;
 }
