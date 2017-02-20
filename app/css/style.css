@@ -54,37 +54,37 @@ html, body, #map {
 
 #btnP2 {
     position: absolute;
-    top: 70px;
+    top: 60px;
     right: 20px;
 }
 
 #btnP3 {
     position: absolute;
-    top: 130px;
+    top: 110px;
     right: 20px;
 }
 
 #btnP4 {
     position: absolute;
-    top: 190px;
+    top: 160px;
     right: 20px;
 }
 
 #btnP5 {
     position: absolute;
-    top: 250px;
+    top: 210px;
     right: 20px;
 }
 
 #btnP6 {
     position: absolute;
-    top: 310px;
+    top: 260px;
     right: 20px;
 }
 
 #btnP7 {
     position: absolute;
-    top: 370px;
+    top: 310px;
     right: 20px;
 }
 
@@ -215,7 +215,16 @@ html, body, #map {
 
 .esriScalebar {
     left: 60px !important;
-    bottom: 67px !important;
+    bottom: 50px !important;
+}
+
+.esriScalebar {
+    width: auto;
+    height: auto;
+    padding: 5px;
+    padding-right: 40px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
 }
 
 #toc-ul>li {

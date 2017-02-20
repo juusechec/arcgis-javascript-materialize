@@ -256,7 +256,7 @@
         <div id="btnP6" title="Detener" class="btn-nav-pane btn-floating btn-small teal dropdown-button btn" onclick="map.infoWindow.unsetMap();navToolbar.deactivate();">
             <i class="material-icons">clear</i>
         </div>
-        <div id="btnP7" title="Limpiar" class="btn-nav-pane btn-floating btn-small teal dropdown-button btn" onclick="map.graphics.clear();">
+        <div id="btnP7" title="Limpiar" class="btn-nav-pane btn-floating btn-small teal dropdown-button btn" onclick="window.currentGeometry=undefined;map.graphics.clear();">
             <i class="material-icons">delete</i>
         </div>
     </div>
@@ -264,7 +264,7 @@
     <div id="navpane" class="card-panel teal lighten-5" style="display:none;">
         <div id="pane-medicion">
             <div id="measurementDiv"></div>
-            <span style="font-size:smaller;padding:5px 5px;">Press <b>CTRL</b> to enable snapping.</span>
+            <span style="font-size:smaller;padding:5px 5px;">Presione <b>CTRL</b> para habilitar previsualizacion de área (snapping).</span>
         </div>
     </div>
     <!-- end #navpane -->
