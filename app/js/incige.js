@@ -2,16 +2,34 @@ var map
 var toolbar
 var esriConfig
 var servicios
+var grupoServicios
 var navToolbar
 var geometriaAnalisis
 
-require(['dojo/request/xhr'], function(xhr) {
-    xhr('conf/servicios.json', {
+require([
+    'dojo/request/xhr',
+    'dojo/promise/all',
+    'dojo/Deferred'
+], function(
+    xhr,
+    all,
+    Deferred
+) {
+
+    var promise1 = xhr('conf/servicios.json', {
         handleAs: 'json'
-    }).then(function(data) {
-        // Do something with the handled data
-        window.servicios = data
+    })
+
+    var promise2 = xhr('conf/grupos.json', {
+        handleAs: 'json'
+    })
+
+    all([promise1, promise2]).then(function(results) {
+        console.log('results', results)
+        window.servicios = results[0]
+        window.grupoServicios = results[1]
         createMap()
+        // results will be an Array
     }, function(err) {
         // Handle the error condition
         console.log('err', err)
@@ -289,11 +307,36 @@ function createMeasurement() {
 
 function createTOC() {
     require([
-        'dojo/dom'
+        'dojo/dom',
+        'dojo/query'
     ], function(
-        dom
+        dom,
+        query
     ) {
-        var ul = dom.byId('toc-ul')
+        var toc = dom.byId('toc-div')
+        var collapsible = '<ul class="collapsible" data-collapsible="accordion">'
+        for (var i = 0; i < window.grupoServicios.length; i++) {
+            var grupo = window.grupoServicios[i]
+            var li = '\
+            <li>\
+                <div class="collapsible-header">\
+                    <i class="material-icons">layers</i>\
+                    ' + grupo.name + '\
+                    <a href="#!" onclick="changeVisibilityGroup(event, \'' + grupo.id + '\', false)">\
+                        <i class="material-icons btnEyeGroup">visibility_off</i>\
+                    </a>\
+                    <a href="#!" onclick="changeVisibilityGroup(event, \'' + grupo.id + '\', true)">\
+                        <i class="material-icons btnEyeGroup">visibility</i>\
+                    </a>\
+                    </div>\
+                <div class="collapsible-body"><ul class="collection" data-group="' + grupo.id + '"></ul></div>\
+            </li>\
+            '
+            collapsible += li
+        }
+        collapsible += '</ul>'
+        toc.innerHTML = collapsible
+
         for (var i = 0; i < window.mapFeatureLayerObjects.length; i++) {
             var layer = window.mapFeatureLayerObjects[i]
             var classVisible = 'visibility'
@@ -306,16 +349,21 @@ function createTOC() {
                 <img src="' + imageUrl + '" alt="" class="circle">\
                 <span class="title" style="padding-right: 22px; display: block;">' + layer.name + '</span>\
                 <p>Desde escala 1:' + layer.maxScale + '</p>\
-                <a href="#!" onclick="changeVisibilityLayer(this,\'' + layer.id + '\')" class="secondary-content">\
-                    <i class="material-icons btnEye">' + classVisible + '</i>\
+                <a href="#!" onclick="changeVisibilityLayer(\'' + layer.id + '\')" class="secondary-content">\
+                    <i class="material-icons btnEye" data-layer-icon="' + layer.id + '">' + classVisible + '</i>\
                 </a>\
             </li>'
-            ul.innerHTML = ul.innerHTML + li
+            var group = query('[data-group="' + layer.groupId + '"]')[0]
+            group.innerHTML += li
         }
+
+        // Se cargan las cosas necesarias
+        $('.collapsible').collapsible()
+        checkVisibilityAtScale()
     })
 }
 
-function changeVisibilityLayer(elem, layerId) {
+function changeVisibilityLayer(layerId) {
     require([
         'dojo/query',
         'dojo/dom'
@@ -323,20 +371,43 @@ function changeVisibilityLayer(elem, layerId) {
         query,
         dom
     ) {
-        if (typeof(elem.estado) === 'undefined') {
-            elem.estado = true
-        }
         var layer = map.getLayer(layerId)
-        var i = query('.material-icons', elem)[0]
-        if (elem.estado) {
+        var icon = query('[data-layer-icon="' + layer.id + '"]')[0]
+        window.layer = layer
+        if (layer.visible) {
             layer.setVisibility(false)
-            i.innerHTML = 'visibility_off'
+            icon.innerHTML = 'visibility_off'
         } else {
             layer.setVisibility(true)
-            i.innerHTML = 'visibility'
+            icon.innerHTML = 'visibility'
         }
-        elem.estado = !elem.estado
+    })
+}
 
+function changeVisibilityGroup(evt, groupId, visibility) {
+    //evt.preventDefault()
+    require([
+        'dojo/query',
+        'dojo/dom'
+    ], function(
+        query,
+        dom
+    ) {
+        evt.stopPropagation()
+        for (var i = 0; i < window.mapFeatureLayerObjects.length; i++) {
+            var layer = window.mapFeatureLayerObjects[i]
+            if (layer.groupId === groupId) {
+                var layer = map.getLayer(layer.id)
+                var icon = query('[data-layer-icon="' + layer.id + '"]')[0]
+                if (visibility) {
+                    layer.setVisibility(true)
+                    icon.innerHTML = 'visibility'
+                } else {
+                    layer.setVisibility(false)
+                    icon.innerHTML = 'visibility_off'
+                }
+            }
+        }
     })
 }
 
@@ -417,8 +488,17 @@ function checkVisibilityAtScale() {
         var layer = window.mapFeatureLayerObjects[i]
         if (scale >= layer.minScale && scale <= layer.maxScale) {
             map.getLayer(layer.id).setVisibility(true)
+            var icon = document.querySelector('[data-layer-icon="' + layer.id + '"]')
+            if (icon !== null) {
+                icon.innerHTML = 'visibility'
+            }
+
         } else {
             map.getLayer(layer.id).setVisibility(false)
+            var icon = document.querySelector('[data-layer-icon="' + layer.id + '"]')
+            if (icon !== null) {
+                icon.innerHTML = 'visibility_off'
+            }
         }
     }
 }

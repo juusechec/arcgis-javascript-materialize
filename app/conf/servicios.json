@@ -33,6 +33,7 @@
             "minScale": 0,
             "maxScale": 10000,
             "visible": "true",
+            "groupId": "energia",
             "fields": [{
                     "alias": "Fase Constructiva",
                     "name": "FCONSTR",
@@ -190,6 +191,7 @@
             "minScale": 0,
             "maxScale": 500000000,
             "visible": "true",
+            "groupId": "energia",
             "fields": [{
                     "alias": "Fase Constructiva",
                     "name": "FCONSTR",
@@ -351,6 +353,7 @@
             "minScale": 0,
             "maxScale": 3000,
             "visible": "true",
+            "groupId": "energia",
             "fields": [{
                     "alias": "Fase Constructiva",
                     "name": "FCONSTR",
@@ -512,6 +515,7 @@
             "minScale": 0,
             "maxScale": 1250,
             "visible": "true",
+            "groupId": "asanitarioc",
             "fields": [{
                     "alias": "Subtipo",
                     "name": "IASSUBTIPO"
@@ -687,6 +691,7 @@
             "minScale": 0,
             "maxScale": 1000,
             "visible": "true",
+            "groupId": "apluvial",
             "fields": [{
                     "alias": "Subtipo",
                     "name": "IAPSUBTIPO"
@@ -845,6 +850,7 @@
             "minScale": 0,
             "maxScale": 1500,
             "icon": "css/img/instalaciones_acueducto.jpg",
+            "groupId": "acueducto",
             "fields": [{
                     "alias": "Tipo Instalacion",
                     "name": "IACTINSTAL"
@@ -1059,6 +1065,7 @@
             "minScale": 0,
             "maxScale": 20000,
             "visible": "true",
+            "groupId": "gas",
             "fields": [{
                     "alias": "Precisión",
                     "name": "PRECISI"
@@ -1236,6 +1243,7 @@
             "minScale": 0,
             "maxScale": 4000,
             "visible": "true",
+            "groupId": "energia",
             "fields": [{
                     "alias": "Fase Constructiva",
                     "name": "FCONSTR",
@@ -1401,6 +1409,7 @@
             "minScale": 0,
             "maxScale": 3000,
             "visible": "true",
+            "groupId": "teleco",
             "fields": [{
                     "alias": "Identificador Único",
                     "name": "CINSCODIGO"
@@ -1608,6 +1617,7 @@
             "minScale": 0,
             "maxScale": 1000,
             "visible": "true",
+            "groupId": "energia",
             "fields": [{
                     "alias": "Identificador Único",
                     "name": "CINSCODIGO"
@@ -1699,6 +1709,7 @@
             "minScale": 0,
             "maxScale": 10000,
             "visible": "true",
+            "groupId": "gas",
             "fields": [{
                     "alias": "Precisión",
                     "name": "PRECISI"
@@ -1922,6 +1933,7 @@
             "minScale": 0,
             "maxScale": 800,
             "visible": "true",
+            "groupId": "teleco",
             "fields": [{
                     "alias": "FASE",
                     "name": "FASE",
@@ -2104,6 +2116,7 @@
             "minScale": 0,
             "maxScale": 2500,
             "visible": "true",
+            "groupId": "energia",
             "fields": [{
                     "alias": "Fase Constructiva",
                     "name": "FCONSTR",
@@ -2265,6 +2278,7 @@
             "minScale": 0,
             "maxScale": 15000,
             "visible": "true",
+            "groupId": "teleco",
             "fields": [{
                     "alias": "FASE",
                     "name": "FASE",
@@ -2426,6 +2440,7 @@
             "minScale": 0,
             "maxScale": 8000,
             "visible": "true",
+            "groupId": "teleco",
             "fields": [{
                     "alias": "FASE",
                     "name": "FASE",
@@ -2595,6 +2610,7 @@
             "minScale": 0,
             "maxScale": 1000,
             "visible": "true",
+            "groupId": "energia",
             "fields": [{
                     "alias": "Fase Constructiva",
                     "name": "FCONSTR",
@@ -2752,6 +2768,7 @@
             "minScale": 0,
             "maxScale": 10000,
             "visible": "true",
+            "groupId": "metro",
             "fields": [{
                     "alias": "ENTITY",
                     "name": "METRO.Eje_Ajustado.ENTITY"
@@ -2914,6 +2931,7 @@
             "minScale": 0,
             "maxScale": 10000,
             "visible": "true",
+            "groupId": "metro",
             "fields": [{
                     "alias": "ENTITY",
                     "name": "METRO.Afectacion_.ENTITY"
@@ -2952,6 +2970,7 @@
             "minScale": 0,
             "maxScale": 1000,
             "visible": "false",
+            "groupId": "catastro",
             "fields": [{
                     "alias": "Codigo de Identificacion de Calzada",
                     "name": "MVICCALZAD"
@@ -3010,6 +3029,7 @@
             "minScale": 0,
             "maxScale": 10000,
             "visible": "true",
+            "groupId": "teleco",
             "fields": [{
                     "alias": "FASE",
                     "name": "FASE",
@@ -3242,6 +3262,7 @@
             "minScale": 0,
             "maxScale": 2000,
             "visible": "true",
+            "groupId": "gas",
             "fields": [{
                     "alias": "Precisión",
                     "name": "PRECISI"
@@ -3478,6 +3499,7 @@
             "minScale": 0,
             "maxScale": 4000,
             "visible": "true",
+            "groupId": "energia",
             "fields": [{
                     "alias": "Fase Constructiva",
                     "name": "FCONSTR",
@@ -3676,6 +3698,7 @@
             "minScale": 0,
             "maxScale": 20000,
             "icon": "css/img/linea_alcantarillado_sanitario_combinado.jpg",
+            "groupId": "asanitarioc",
             "fields": [{
                     "alias": "Subtipo",
                     "name": "LASSUBTIPO"
@@ -4245,6 +4268,7 @@
             "minScale": 0,
             "maxScale": 8000,
             "icon": "css/img/linea_alcantarillado_pluvial.jpg",
+            "groupId": "apluvial",
             "fields": [{
                     "alias": "Subtipo",
                     "name": "LAPSUBTIPO"
@@ -4825,6 +4849,7 @@
             "minScale": 0,
             "maxScale": 40000,
             "icon": "css/img/linea.jpg",
+            "groupId": "acueducto",
             "fields": [{
                     "alias": "Categoría Red",
                     "name": "LACCRED"
@@ -5221,6 +5246,7 @@
             "minScale": 0,
             "maxScale": 120000,
             "visible": "true",
+            "groupId": "metro",
             "fields": [{
                     "alias": "Impacto",
                     "name": "IMPACTO"
@@ -5239,6 +5265,7 @@
             "minScale": 0,
             "maxScale": 1000,
             "visible": "false",
+            "groupId": "catastro",
             "fields": [{
                     "alias": "Tipo de material",
                     "name": "ANDMATERIA"
@@ -5261,6 +5288,7 @@
             "minScale": 0,
             "maxScale": 1000,
             "visible": "false",
+            "groupId": "catastro",
             "fields": [{
                     "alias": "Funcionalidad",
                     "name": "CALFUNCION"
@@ -5291,6 +5319,7 @@
             "minScale": 0,
             "maxScale": 1000,
             "visible": "true",
+            "groupId": "metro",
             "fields": [{
                     "alias": "FID_",
                     "name": "FID_"
@@ -5333,6 +5362,7 @@
             "minScale": 0,
             "maxScale": 1000,
             "visible": "false",
+            "groupId": "catastro",
             "fields": [{
                     "alias": "Identificador unico de la manzana",
                     "name": "MANCODIGO"
@@ -5351,6 +5381,7 @@
             "minScale": 0,
             "maxScale": 1000,
             "visible": "false",
+            "groupId": "catastro",
             "fields": [{
                     "alias": "Tipo de material",
                     "name": "SEPMATERIA"

@@ -161,6 +161,7 @@ function llenarFilas(fl, actual, min, max) {
     if (configCapas[id].visible !== undefined) {
         visible = '"visible": "' + configCapas[id].visible + '",'
     }
+    var groupId = configCapas[id].groupId
     var jsonLayer =
         `{
         "name": "` + name + `",
@@ -171,6 +172,7 @@ function llenarFilas(fl, actual, min, max) {
         "maxScale": ` + maxScale + `,
         ` + icon + `
         ` + visible + `
+        "groupId": "` + groupId + `",
         "fields": [` +
         jsonFields + `]
       },`
