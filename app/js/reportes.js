@@ -199,8 +199,15 @@ function getRedesAfectadas(listener) {
             promises.push(deferreds[i].promise)
         }
         all(promises).then(function(results) {
+            //callback
             console.log('results', results)
             listener(resultadosRedesAfectadas)
+        }, function(err) {
+            //errback
+            console.log('err', err)
+        }, function(update) {
+            //progback
+            console.log('update', update)
         })
     })
 }

@@ -470,6 +470,7 @@ function addToMap(evt) {
         var graphic = new Graphic(geometry, symbol)
         map.graphics.add(graphic)
         window.currentGeometry = geometry
+        zoomToGeometry(window.currentGeometry)
     })
 }
 
@@ -612,12 +613,13 @@ function showBuffer(bufferedGeometries) {
             ),
             new Color([255, 0, 0, 0.35])
         )
-        //OJO: solo se selecciona el primero porque es punto, linea o polígono unido
-        window.currentGeometry = bufferedGeometries[0]
         array.forEach(bufferedGeometries, function(geometry) {
             var graphic = new Graphic(geometry, symbol)
             map.graphics.add(graphic)
         })
+        //OJO: solo se selecciona el primero porque es punto, linea o polígono unido
+        window.currentGeometry = bufferedGeometries[0]
+        zoomToGeometry(window.currentGeometry)
     })
 }
 
@@ -628,6 +630,15 @@ function applyBuffer(evt) {
         doBuffer({
             geometry: window.currentGeometry
         })
+    }
+}
+
+function zoomToGeometry(geometry) {
+    if (geometry.type == "point") {
+        map.centerAt(geometry)
+    }
+    if (geometry.getExtent() != null) {
+        map.setExtent(geometry.getExtent().expand(3))
     }
 }
 
