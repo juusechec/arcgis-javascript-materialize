@@ -14,11 +14,11 @@ $.when($.ajax({
     console.log('Ok:', serviciosFijos, grupos)
     configCapas = serviciosFijos[0]
     configGrupos = grupos[0]
-}).then( function(a1, a2) {
+}).then(function(a1, a2) {
     console.log('Ok then:', a1, a2)
-}, function(a1, a2){
-  console.log('Failure:', a1, a2)
-} );
+}, function(a1, a2) {
+    console.log('Failure:', a1, a2)
+});
 
 var map
 var urlServicio
@@ -128,12 +128,12 @@ function llenarFilas(fl, actual, min, max) {
         } else {
             domain = ', "domain": ' + JSON.stringify(domain)
         }
-        var json =
-            `{
-                "alias": "` + alias + `",
-                "name": "` + name + `"
-                ` + domain + `
-              },`
+        var json = '\n\
+             {\n\
+                "alias": "' + alias + '",\n\
+                "name": "' + name + '"\n\
+                ' + domain + '\n\
+              },'
         if (name === 'OBJECTID') {
             json = ''
         }
@@ -162,20 +162,19 @@ function llenarFilas(fl, actual, min, max) {
         visible = '"visible": "' + configCapas[id].visible + '",'
     }
     var groupId = configCapas[id].groupId
-    var jsonLayer =
-        `{
-        "name": "` + name + `",
-        "id": "` + id + `",
-        "layerId": "` + layerId + `",
-        "enable": ` + enable + `,
-        "minScale": 0,
-        "maxScale": ` + maxScale + `,
-        ` + icon + `
-        ` + visible + `
-        "groupId": "` + groupId + `",
-        "fields": [` +
-        jsonFields + `]
-      },`
+    var jsonLayer = '\n\
+        {\n\
+        "name": "' + name + '",\n\
+        "id": "' + id + '",\
+        "layerId": "' + layerId + '",\n\
+        "enable": ' + enable + ',\n\
+        "minScale": 0,\n\
+        "maxScale": ' + maxScale + ',\n\
+        ' + icon + '\n\
+        ' + visible + '\n\
+        "groupId": "' + groupId + '",\n\
+        "fields": [' + jsonFields + ']\n\
+      },'
     console.log('jsonLayer', jsonLayer)
     jsonString += jsonLayer
 

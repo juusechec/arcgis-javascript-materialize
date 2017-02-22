@@ -6,7 +6,7 @@
 var gulp = require('gulp')
 var webserver = require('gulp-webserver')
 var minify = require('gulp-minifier')
-var babel = require('gulp-babel')
+//var babel = require('gulp-babel')
 var merge = require('merge-stream')
 
 gulp.task('webserver', function() {
@@ -36,7 +36,7 @@ gulp.task('watch', ['sass'], function (){
 });
 */
 gulp.task('minify', function() {
-    var allfiles = gulp.src(['app/**/*', '!app/vendor/**/*', '!app/**/*.js'])
+    var allfiles = gulp.src(['app/**/*', '!app/vendor/**/*'])
         .pipe(minify({
             minify: true,
             collapseWhitespace: true,
@@ -50,30 +50,31 @@ gulp.task('minify', function() {
         }))
         .pipe(gulp.dest('dist/app'))
     // http://stackoverflow.com/questions/34398338/uglification-failed-unexpected-character
-    var jsfiles = gulp.src(['app/**/*.js', '!app/vendor/**/*', '!app/js/mustache-dojo.js'])
-        .pipe(babel({
-            presets: ['es2015']
-        }))
-        .pipe(minify({
-            minify: true,
-            collapseWhitespace: true,
-            conservativeCollapse: true,
-            minifyJS: true,
-            minifyCSS: true,
-            getKeptComment: function(content, filePath) {
-                var m = content.match(/\/\*![\s\S]*?\*\//img);
-                return m && m.join('\n') + '\n' || '';
-            }
-        }))
-        .pipe(gulp.dest('dist/app'))
+    // var jsfiles = gulp.src(['app/**/*.js', '!app/vendor/**/*', '!app/js/mustache-dojo.js'])
+    //     .pipe(babel({
+    //         presets: ['es2015']
+    //     }))
+    //     .pipe(minify({
+    //         minify: true,
+    //         collapseWhitespace: true,
+    //         conservativeCollapse: true,
+    //         minifyJS: true,
+    //         minifyCSS: true,
+    //         getKeptComment: function(content, filePath) {
+    //             var m = content.match(/\/\*![\s\S]*?\*\//img);
+    //             return m && m.join('\n') + '\n' || '';
+    //         }
+    //     }))
+    //     .pipe(gulp.dest('dist/app'))
+
     var vendorfiles = gulp.src(['app/vendor/**/*'])
         .pipe(gulp.dest('dist/app/vendor'))
 
-    var exeptionfiles = gulp.src(['app/js/mustache-dojo.js'])
-        .pipe(gulp.dest('dist/app/js'))
+    // var exeptionfiles = gulp.src(['app/js/mustache-dojo.js'])
+    //     .pipe(gulp.dest('dist/app/js'))
 
     // https://github.com/gulpjs/gulp/blob/master/docs/recipes/using-multiple-sources-in-one-task.md
-    return merge(allfiles, jsfiles, vendorfiles, exeptionfiles)
+    return merge(allfiles, vendorfiles)
 })
 
 //https://github.com/andresvia/go-angular-drone/blob/master/.drone.yml
