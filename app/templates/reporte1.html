@@ -35,10 +35,14 @@
           {{#resultado}}
           <ul>
               <li>
-                  <h3>Resultado {{capa}}</h3>
+                  <h3>Capa: {{capa}}</h3>
               </li>
               {{#entidades}}
-              <li>OBJECTID: {{OBJECTID}}<br>CAMPOS: {{campos}}</li>
+                <li>
+                  {{#campos}}
+                    {{texto}}<br>
+                  {{/campos}}
+                </li>
               {{/entidades}}
           </ul>
           {{/resultado}}

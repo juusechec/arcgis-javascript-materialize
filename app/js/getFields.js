@@ -18,7 +18,7 @@ $.when($.ajax({
     console.log('Ok then:', a1, a2)
 }, function(a1, a2) {
     console.log('Failure:', a1, a2)
-});
+})
 
 var map
 var urlServicio

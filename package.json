@@ -19,9 +19,7 @@
   "author": "Jorge Ulises Useche Cuellar <naturalmenterjorge@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "babel-preset-es2015": "^6.22.0",
     "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
     "gulp-minifier": "^0.1.4",
     "gulp-webserver": "^0.9.1",
     "merge-stream": "^1.0.1"

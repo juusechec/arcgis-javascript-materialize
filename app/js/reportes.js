@@ -157,22 +157,37 @@ function getRedesAfectadas(listener) {
                             var features = results.featureSet.features
                             if (features.length > 0) {
                                 var entidades = new Array()
+                                var queryLayer = getLayerByLayerId(newLayer.id)
                                 for (var k = 0; k < features.length; k++) {
                                     var attributes = features[k].attributes
-                                    var campos = ''
+                                    var campos = new Array()
+                                    var queryFields = getFieldsByLayer(queryLayer)
                                     for (var m in attributes) {
                                         //console.log(m, attributes, attributes[m])
-                                        campos += m + ': ' + attributes[m] + '\n'
+                                        //console.log(queryFields)
+                                        var texto = ''
+                                        if (queryFields.alias[m] !== undefined) {
+                                            if (queryFields.codedValues[m] !== undefined) {
+                                                texto = queryFields.alias[m] + ': ' + queryFields.codedValues[m][attributes[m]]
+                                            } else {
+                                                texto = queryFields.alias[m] + ': ' + attributes[m]
+                                            }
+                                        } else {
+                                            //Solo para OBJECTID?
+                                            texto = m + ': ' + attributes[m]
+                                        }
+                                        var campo = {
+                                            'texto': texto
+                                        }
+                                        campos.push(campo)
                                     }
-                                    //campos = campos.slide(0,campos.lastIndexOf(';') - 1)
                                     var entidad = {
-                                        'OBJECTID': attributes.OBJECTID,
                                         'campos': campos
                                     }
                                     entidades.push(entidad)
                                 }
                                 var resultado = {
-                                    'capa': newLayer.id,
+                                    'capa': queryLayer.name,
                                     'entidades': entidades
                                 }
                                 console.log(resultado)
@@ -210,4 +225,45 @@ function getRedesAfectadas(listener) {
             console.log('update', update)
         })
     })
+}
+
+function getLayerByLayerId(layerId) {
+    for (var i = 0; i < servicios.length; i++) {
+        var servicio = servicios[i]
+        if (servicio.layers !== undefined) {
+            for (var j = 0; j < servicio.layers.length; j++) {
+                var layer = servicio.layers[j]
+                if (layer.id === layerId) {
+                    return layer
+                }
+            }
+        }
+    }
+}
+
+function getFieldsByLayer(layer) {
+    var fields = {
+        'alias': new Object(),
+        'codedValues': new Object()
+    }
+    if (typeof(layer.fields) === 'undefined' || layer.fields.length === 0) {
+
+    } else {
+        for (var i = 0; i < layer.fields.length; i++) {
+            var field = layer.fields[i]
+            fields.alias[field.name] = field.alias
+            if (field.domain === undefined) {
+
+            } else {
+                var codedValues = field.domain.codedValues
+                for (var j = 0; j < codedValues.length; j++) {
+                    if (fields.codedValues[field.name] === undefined) {
+                        fields.codedValues[field.name] = new Object()
+                    }
+                    fields.codedValues[field.name][codedValues[j].code] = codedValues[j].name
+                }
+            }
+        }
+    }
+    return fields
 }
